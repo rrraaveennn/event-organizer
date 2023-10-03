@@ -5,7 +5,7 @@ export default function Chat() {
         <ScrollView style={styles.container}>
             <View>
                 <Text>
-                    Notification Screen
+                    Chat Screen
                 </Text>
             </View>
         </ScrollView>
