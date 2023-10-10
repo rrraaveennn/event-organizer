@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -33,6 +33,7 @@ const screenOptions = {
         const title = route.name;
         
         return <View style={styles.header}>
+            <StatusBar backgroundColor={'#f6f7f9'} barStyle={'dark-content'} />
             <Text style={styles.headerTitle}>
                 {title}
             </Text>
@@ -129,8 +130,8 @@ export default function BottomTabs({ safeContainer }) {
 
 const styles = StyleSheet.create({
     header: {
-        height: 85,
-        paddingTop: 27,
+        height: 50,
+        paddingTop: 0,
         backgroundColor: '#f6f7f9',
         flexDirection: 'row',
         alignItems: 'center',
