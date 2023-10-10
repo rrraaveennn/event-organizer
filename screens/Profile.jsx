@@ -1,5 +1,11 @@
-import { StyleSheet, ScrollView, View, Text, Image, Pressable } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import {
+    StyleSheet,
+    ScrollView,
+    View,
+    Text,
+    Image,
+    Pressable
+} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
 import ReviewPost from '../components/ReviewPost';
@@ -21,20 +27,20 @@ export default function Profile() {
                             <Image source={require("../assets/RYBN.jpg")} style={styles.avatar} />
                         </Pressable>
                         <Pressable onPress={() => {}} style={styles.editProfile}>
-                            <Ionicons name="settings-sharp" size={20} color="#22222f" style={styles.settings} />
+                            <Ionicons name="settings-sharp" size={20} color="#f6f7f9" style={styles.settings} />
                             <Text style={{
                                 fontWeight: 700,
-                                color: '#22222f'
+                                color: '#f6f7f9'
                             }}>Edit profile</Text>
                         </Pressable>
-                        {/* <Pressable onPress={() => { }} style={styles.messageButton}>
+                        <Pressable onPress={() => { }} style={styles.messageButton}>
                             <FontAwesome5 name="envelope" size={20} color="#f6f7f9" />
                             <Text style={{
                                 color: '#f6f7f9'
                             }}>
                                 Message
                             </Text>
-                        </Pressable> */}
+                        </Pressable>
                     </View>
                     <View>
                         <Text style={styles.displayName}>
@@ -66,12 +72,12 @@ export default function Profile() {
                 </View>
                 <View style={styles.topTab}>
                     <Pressable onPress={() => { }} style={styles.topTabItems}>
-                        <Text>
+                        <Text style={styles.topTabText}>
                             Reviews
                         </Text>
                     </Pressable>
                     <Pressable onPress={() => { }} style={styles.topTabItems}>
-                        <Text>
+                        <Text style={styles.topTabText}>
                             Feedbacks
                         </Text>
                     </Pressable>
@@ -100,14 +106,14 @@ export default function Profile() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#deded3",
+        backgroundColor: "#33333f",
     },
     userSection: {
         flex: 1,
         marginBottom: 5
     },
     userInfo: {
-        backgroundColor: "#f6f7f9",
+        backgroundColor: "#22222f",
         flex: 1,
         padding: 10,
         gap: 5
@@ -121,14 +127,14 @@ const styles = StyleSheet.create({
     },
     displayName: {
         fontSize: 18,
-        color: '#22222f'
+        color: '#f6f7f9'
     },
     role: {
         fontWeight: '200',
         color: 'gray'
     },
     messageButton: {
-        backgroundColor: '#22222f',
+        backgroundColor: '#ff9030',
         paddingVertical: 8,
         paddingHorizontal: 16,
         borderRadius: 20,
@@ -152,7 +158,7 @@ const styles = StyleSheet.create({
     },
     editProfile: {
         borderWidth: 2,
-        borderColor: '#22222f',
+        borderColor: '#f6f7f9',
         borderRadius: 20,
         paddingHorizontal: 10,
         height: 30,
@@ -167,7 +173,7 @@ const styles = StyleSheet.create({
 
     },
     bioContent: {
-        color: '#22222f'
+        color: '#f6f7f9'
     },
     bio: {
         width: 300
@@ -181,9 +187,10 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         alignItems: 'center',
         height: 50,
-        backgroundColor: '#f6f7f9'
+        backgroundColor: '#22222f'
     },
-    topTabItems: {
-        
+    topTabItems: {},
+    topTabText: {
+        color: '#f6f7f9'
     }
 });

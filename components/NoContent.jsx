@@ -4,7 +4,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 export default function NoContent(props) {
     return (
         <View style={styles.container}>
-            <MaterialCommunityIcons name="cup-outline" size={80} color="#22222f" />
+            <MaterialCommunityIcons name="cup-outline" size={80} color="#f6f7f9" />
             <Text style={styles.headline}>
                 {props.headline}
             </Text>
@@ -22,6 +22,6 @@ const styles = StyleSheet.create({
     headline: {
         fontSize: 30,
         fontWeight: 'bold',
-        color: '#22222f'
+        color: '#f6f7f9'
     }
 })

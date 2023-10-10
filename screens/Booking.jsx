@@ -13,6 +13,6 @@ export default function Booking() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#f6f7f9"
+        backgroundColor: "#33333f"
     }
 })

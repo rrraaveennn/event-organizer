@@ -6,7 +6,7 @@ export default function RatingStatus(props) {
 
     return (
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3 }}>
-                <Text style={{ top: 1, color: '#22222f' }}>
+                <Text style={{ top: 1, color: '#f6f7f9' }}>
                     {props.rating}
                 </Text>
                 <View style={styles.starItems}>

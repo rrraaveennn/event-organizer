@@ -10,15 +10,15 @@ export default function ReviewPost(props) {
                     <Image source={require('../assets/user.png')} style={styles.avatar} />
                     <Text style={{
                         fontWeight: 700,
-                        color: '#22222f'
+                        color: '#f6f7f9'
                     }}>
                         {props.user}
                     </Text>
                 </View>
                 <RatingStatus rating={props.rating} />
             </View>
-            <View style={styles.reviewContent}>
-            <Text>
+            <View>
+            <Text style={styles.reviewContent}>
                 {props.children}
             </Text>
             </View>
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         width: 20
     },
     review: {
-        backgroundColor: '#f6f7f9',
+        backgroundColor: '#22222f',
         flex: 1,
         padding: 15,
         gap: 4
@@ -46,6 +46,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     reviewContent: {
-        color: '#22222f'
+        color: '#f6f7f9'
     }
 })

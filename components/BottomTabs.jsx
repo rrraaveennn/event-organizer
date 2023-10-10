@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, StatusBar } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -27,12 +27,13 @@ const screenOptions = {
         right: 0,
         elevation: 0,
         height: 60,
-        backgroundColor: "#f6f7f9"
+        backgroundColor: "#22222f"
     },
     header: ({ navigation, route, options }) => {
         const title = route.name;
         
         return <View style={styles.header}>
+            <StatusBar backgroundColor={'#22222f'} barStyle={'light-content'} />
             <Text style={styles.headerTitle}>
                 {title}
             </Text>
@@ -51,7 +52,7 @@ export default function BottomTabs({ safeContainer }) {
                     options={{
                         tabBarIcon: ({ focused }) => {
                             return <View>
-                                <Entypo name="home" size={24} color={focused ? "#443cff" : "#22222f"} />
+                                <Entypo name="home" size={24} color={focused ? "#443cff" : "#f6f7f9"} />
                             </View>
                         }
                     }}
@@ -66,7 +67,7 @@ export default function BottomTabs({ safeContainer }) {
                     options={{
                         tabBarIcon: ({ focused }) => {
                             return <View>
-                                <Ionicons name="notifications" size={24} color={focused ? "#443cff" : "#22222f"} />
+                                <Ionicons name="notifications" size={24} color={focused ? "#443cff" : "#f6f7f9"} />
                             </View>
                         }
                     }}
@@ -81,7 +82,7 @@ export default function BottomTabs({ safeContainer }) {
                     options={{
                         tabBarIcon: ({ focused }) => {
                             return <View>
-                                <Ionicons name="chatbubble" size={24} color={focused ? "#443cff" : "#22222f"} />
+                                <Ionicons name="chatbubble" size={24} color={focused ? "#443cff" : "#f6f7f9"} />
                             </View>
                         }
                     }}
@@ -96,7 +97,7 @@ export default function BottomTabs({ safeContainer }) {
                     options={{
                         tabBarIcon: ({ focused }) => {
                             return <View>
-                                <MaterialIcons name="book" size={24} color={focused ? "#443cff" : "#22222f"} />
+                                <MaterialIcons name="book" size={24} color={focused ? "#443cff" : "#f6f7f9"} />
                             </View>
                         }
                     }}
@@ -111,7 +112,7 @@ export default function BottomTabs({ safeContainer }) {
                     options={{
                         tabBarIcon: ({ focused }) => {
                             return <View>
-                                <FontAwesome name="user-circle-o" size={24} color={focused ? "#443cff" : "#22222f"} />
+                                <FontAwesome name="user-circle-o" size={24} color={focused ? "#443cff" : "#f6f7f9"} />
                             </View>
                         }
                     }}
@@ -129,15 +130,16 @@ export default function BottomTabs({ safeContainer }) {
 
 const styles = StyleSheet.create({
     header: {
-        height: 85,
-        paddingTop: 27,
-        backgroundColor: '#f6f7f9',
+        height: 60,
+        paddingTop: 0,
+        backgroundColor: '#22222f',
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 10
     },
     headerTitle: {
         fontSize: 20,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: '#f6f7f9'
     }
 })
