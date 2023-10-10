@@ -1,83 +1,114 @@
 import { StyleSheet, ScrollView, View, Text, Image, Pressable } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import { Octicons } from '@expo/vector-icons';
+import ReviewPost from '../components/ReviewPost';
+import RatingStatus from '../components/ratingStatus';
+import NoContent from '../components/NoContent';
+import { FontAwesome5 } from '@expo/vector-icons';
 
 export default function Profile() {
     return (
         <ScrollView style={styles.container}>
             <View style={styles.userSection}>
-                <View style={styles.cover}>
-                    <Image source={require('../assets/RYBN.jpg')}/>
-                </View>
                 <View style={styles.userInfo}>
-                    <Pressable onPress={() => {}}>
-                        <Image source={require("../assets/user.png")} style={styles.avatar} />
-                    </Pressable>
-                    <Ionicons name="settings-sharp" size={30} color="black" style={styles.settings} />
-                    <Text style={styles.displayName}>
-                        John Doe
-                    </Text>
-                    <Text style={{...styles.role, fontWeight: 'bold'}}>
-                        johndoe@gmail.com
-                    </Text>
-                    <Text style={styles.role}>
-                        Event Organizer / Concerts
-                    </Text>
-                    <View>
-                        <Text>
-                            Lorem ipsum dolor sit amet
-                        </Text>
-                    </View>
-                    <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingTop: 5  }}>
-                        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                        <MaterialIcons name="star-rate" size={24} color="#ff9030"/>
-                            <Text style={{ paddingTop: 5 }}>
-                                5.0
-                        </Text>
-                        </View>
-
-                        {/* <Pressable style={styles.messageButton}>
-                            <Text style={{color: 'white'}}>Message</Text>
+                    <View style={{
+                        justifyContent: 'space-between',
+                        flexDirection: 'row',
+                        alignItems: 'center'
+                    }}>
+                        <Pressable onPress={() => {}}>
+                            <Image source={require("../assets/RYBN.jpg")} style={styles.avatar} />
+                        </Pressable>
+                        <Pressable onPress={() => {}} style={styles.editProfile}>
+                            <Ionicons name="settings-sharp" size={20} color="#22222f" style={styles.settings} />
+                            <Text style={{
+                                fontWeight: 700,
+                                color: '#22222f'
+                            }}>Edit profile</Text>
+                        </Pressable>
+                        {/* <Pressable onPress={() => { }} style={styles.messageButton}>
+                            <FontAwesome5 name="envelope" size={20} color="#f6f7f9" />
+                            <Text style={{
+                                color: '#f6f7f9'
+                            }}>
+                                Message
+                            </Text>
                         </Pressable> */}
                     </View>
+                    <View>
+                        <Text style={styles.displayName}>
+                            RYBN
+                        </Text>
+                        <Text style={{...styles.role, fontWeight: 'bold'}}>
+                            rrraaveennn@gmail.com
+                        </Text>
+                        <Text style={styles.role}>
+                            Organizer / Concerts
+                        </Text>
+                    </View>
+                    <View style={styles.bio}>
+                        <Text style={styles.bioContent}>
+                            Hello, I'm Raven.
+                        </Text>
+                    </View>
+                    <View>
+                        
+                        <Text style={{
+                            color: 'gray',
+                        }}>
+                            <Octicons name="location" size={16} color="gray" /> Manila, Philippines
+                        </Text>
+                    </View>
+                    <View style={{flexDirection: 'row', justifyContent: 'space-between',  }}>
+                        <RatingStatus rating={"2.9"} />
+                    </View>
                 </View>
-                
+                <View style={styles.topTab}>
+                    <Pressable onPress={() => { }} style={styles.topTabItems}>
+                        <Text>
+                            Reviews
+                        </Text>
+                    </Pressable>
+                    <Pressable onPress={() => { }} style={styles.topTabItems}>
+                        <Text>
+                            Feedbacks
+                        </Text>
+                    </Pressable>
+                </View>
             </View>
-            
-            {/* <View style={styles.topTab}>
-                <Pressable style={styles.topTabButton }>
-                    <Text style={{textAlign: 'center'}}>
-                        Feeds
-                    </Text>
-                </Pressable>
-                <Pressable style={styles.topTabButton}>
-                    <Text style={{textAlign: 'center'}}>
-                        Reviews
-                    </Text>
-                </Pressable>
-            </View> */}
+
+            <View style={styles.userContent}>
+                <ReviewPost user={"John Doe"} rating={"1.3"} >
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure magnam ullam atque, doloremque tenetur corrupti qui saepe vero, sed laudantium voluptates totam expedita quos necessitatibus accusamus voluptate quia hic molestias.
+                </ReviewPost>
+                <ReviewPost user={"Hanni Pham"} rating={"5.0"}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                </ReviewPost>
+                <ReviewPost user={"Juan Dela Cruz"} rating={"3.5"}>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius quia, voluptatem expedita tenetur dolores quis sapiente cupiditate consectetur fugiat, sint cum? Cum enim recusandae quas praesentium explicabo quod blanditiis illum.
+                </ReviewPost>
+                <ReviewPost user={"Jireh Belen"} rating={"4.8"}>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem, labore repellendus aperiam minima perferendis quia error vero libero sunt culpa magni officia et, maiores mollitia cumque, explicabo tempora earum! Saepe.
+                </ReviewPost>
+                <NoContent headline={"No More Reviews"} />
+            </View>
         </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        height: '100%',
-        backgroundColor: "#f6f7f9", 
-    },
-    cover: {
-        backgroundColor: "gray",
-        flex: .4
+        flex: 1,
+        backgroundColor: "#deded3",
     },
     userSection: {
-        height: 400,
-        justifyContent: 'flex-end'
+        flex: 1,
+        marginBottom: 5
     },
     userInfo: {
         backgroundColor: "#f6f7f9",
-        borderBottomWidth: 1,
-        
-        flex: .6,
+        flex: 1,
         padding: 10,
         gap: 5
     },
@@ -90,7 +121,7 @@ const styles = StyleSheet.create({
     },
     displayName: {
         fontSize: 18,
-        
+        color: '#22222f'
     },
     role: {
         fontWeight: '200',
@@ -100,7 +131,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#22222f',
         paddingVertical: 8,
         paddingHorizontal: 16,
-        borderRadius: 50
+        borderRadius: 20,
+        height: 35,
+        flexDirection: 'row',
+        gap: 8
     },
     topTab: {
         flexDirection: 'row',
@@ -116,9 +150,40 @@ const styles = StyleSheet.create({
         height: '100%',
         justifyContent: 'center'
     },
-    settings: {
-        position: 'absolute',
-        right: 10,
-        top: 25
+    editProfile: {
+        borderWidth: 2,
+        borderColor: '#22222f',
+        borderRadius: 20,
+        paddingHorizontal: 10,
+        height: 30,
+        justifyContent: 'center',
+        flexDirection: 'row',
+        gap: 8,
+        alignItems: 'center',
+        height: 35
+    },
+    starItems: {
+        flexDirection: 'row',
+
+    },
+    bioContent: {
+        color: '#22222f'
+    },
+    bio: {
+        width: 300
+    },
+    userContent: {
+        flex: 1,
+        gap: 5
+    },
+    topTab: {
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+        height: 50,
+        backgroundColor: '#f6f7f9'
+    },
+    topTabItems: {
+        
     }
 });
