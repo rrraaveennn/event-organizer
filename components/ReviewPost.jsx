@@ -12,7 +12,7 @@ export default function ReviewPost(props) {
                         fontWeight: 700,
                         color: '#f6f7f9'
                     }}>
-                        {props.user}
+                        {props.name}
                     </Text>
                 </View>
                 <RatingStatus rating={props.rating} />

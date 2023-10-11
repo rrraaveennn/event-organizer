@@ -4,7 +4,8 @@ import {
     View,
     Text,
     Image,
-    Pressable
+    Pressable,
+    FlatList
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
@@ -12,6 +13,33 @@ import ReviewPost from '../components/ReviewPost';
 import RatingStatus from '../components/ratingStatus';
 import NoContent from '../components/NoContent';
 import { FontAwesome5 } from '@expo/vector-icons';
+
+const DATA = [
+    {
+        id: '1',
+        name: 'John Doe',
+        rating: '1.3',
+        comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure magnam ullam atque, doloremque tenetur corrupti qui saepe vero, sed laudantium voluptates totam expedita quos necessitatibus accusamus voluptate quia hic molestias.'
+    },
+    {
+        id: '2',
+        name: 'Hanni Pham',
+        rating: '5.0',
+        comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.'
+    },
+    {
+        id: '3',
+        name: 'Juan Dela Cruz',
+        rating: '3.5',
+        comment: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius quia, voluptatem expedita tenetur dolores quis sapiente cupiditate consectetur fugiat, sint cum? Cum enim recusandae quas praesentium explicabo quod blanditiis illum.'
+    },
+    {
+        id: '4',
+        name: 'Jireh Belen',
+        rating: '4.8',
+        comment: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem, labore repellendus aperiam minima perferendis quia error vero libero sunt culpa magni officia et, maiores mollitia cumque, explicabo tempora earum! Saepe.'
+    }
+];
 
 export default function Profile() {
     return (
@@ -85,7 +113,12 @@ export default function Profile() {
             </View>
 
             <View style={styles.userContent}>
-                <ReviewPost user={"John Doe"} rating={"1.3"} >
+                {
+                    DATA.map((item) => <ReviewPost name={item.name} rating={item.rating}>
+                        {item.comment}
+                    </ReviewPost>)
+                }
+                {/* <ReviewPost user={"John Doe"} rating={"1.3"} >
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure magnam ullam atque, doloremque tenetur corrupti qui saepe vero, sed laudantium voluptates totam expedita quos necessitatibus accusamus voluptate quia hic molestias.
                 </ReviewPost>
                 <ReviewPost user={"Hanni Pham"} rating={"5.0"}>
@@ -96,7 +129,7 @@ export default function Profile() {
                 </ReviewPost>
                 <ReviewPost user={"Jireh Belen"} rating={"4.8"}>
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem, labore repellendus aperiam minima perferendis quia error vero libero sunt culpa magni officia et, maiores mollitia cumque, explicabo tempora earum! Saepe.
-                </ReviewPost>
+                </ReviewPost> */}
                 <NoContent headline={"No More Reviews"} />
             </View>
         </ScrollView>
