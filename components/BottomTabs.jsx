@@ -27,7 +27,7 @@ const screenOptions = {
         right: 0,
         elevation: 0,
         height: 60,
-        backgroundColor: "#22222f"
+        backgroundColor: "#22222f",
     },
     header: ({ navigation, route, options }) => {
         const title = route.name;
@@ -131,6 +131,8 @@ export default function BottomTabs({ safeContainer }) {
 const styles = StyleSheet.create({
     header: {
         height: 60,
+        borderBottomWidth: 1,
+        borderBottomColor: 'grey',
         paddingTop: 0,
         backgroundColor: '#22222f',
         flexDirection: 'row',

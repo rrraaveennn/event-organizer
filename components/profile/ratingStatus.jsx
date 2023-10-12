@@ -6,9 +6,12 @@ export default function RatingStatus(props) {
 
     return (
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3 }}>
-                <Text style={{ top: 1, color: '#f6f7f9' }}>
-                    {props.rating}
-                </Text>
+                {
+                    props.showRating &&
+                    <Text style={{ top: 1, color: '#f6f7f9' }}>
+                        {props.rating}
+                    </Text>
+                }
                 <View style={styles.starItems}>
                     <MaterialIcons name="star-rate" size={16} color={Number(props.rating) >= 1 ? "#ff9030": "grey"} />
                     <MaterialIcons name="star-rate" size={16} color={Number(props.rating) >= 2 ? "#ff9030": "grey"} />
