@@ -10,7 +10,7 @@ const POST = {
     attachment: '../assets/wallpaper.jpg'
 }
 
-export default function Service(props) {
+export default function Review(props) {
     const attachment = props.attachment;
 
     return (
@@ -22,10 +22,13 @@ export default function Service(props) {
             </View>
             <View style={styles.contentSection}>
                 <View style={styles.userNameContainer}>
-                    <Pressable onPress={() => { }}>
+                    <Pressable onPress={() => { }} style={{
+                        gap: 2
+                    }}>
                         <Text style={styles.userName}>
                             {props.name}
                         </Text>
+                        <RatingStatus rating={props.rating} />
                     </Pressable>
                     <View style={{
                         flexDirection: 'row',
@@ -43,7 +46,6 @@ export default function Service(props) {
                     </View>
                 </View>
                 <View style={styles.body}>
-                    <RatingStatus rating={props.rating} />
                     <Text style={styles.body}>
                         
                         {POST.body}
@@ -92,7 +94,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'end',
-        // backgroundColor: 'white'
+        // backgroundColor: 'white',
+        paddingBottom: 8
     },
     userName: {
         fontWeight: 'bold',

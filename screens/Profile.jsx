@@ -7,12 +7,12 @@ import {
     Pressable,
     FlatList
 } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { Octicons } from '@expo/vector-icons';
-import RatingStatus from '../components/profile/ratingStatus';
 import NoContent from '../components/NoContent';
 import { FontAwesome5 } from '@expo/vector-icons';
-import Service from '../components/Service';
+import Review from '../components/Review';
+import Description from '../components/profile/Description';
+import ProfileUserInfo from '../components/profile/ProfileUserInfo';
+
 
 const USER = {
     name: 'RYBN',
@@ -20,7 +20,8 @@ const USER = {
     role: 'Organizer',
     service: 'Concerts',
     address: 'Manila, Philippines',
-    rating: '3.5'
+    rating: '3.5',
+    description: "The prospect of planning a business event can trigger a lot of anxiety in an event planner. After all, it’s easy to get overwhelmed by the many different types of events you can choose from. And yet, each event type plays an important role in a company’s event marketing strategy. Fortunately, you don’t have to make that choice alone.We’ve compiled a list of eight types of events to make sure you start off in the right direction.No matter your business goals, there’s a strong probability that one of these choices will send you, your sponsors, and your attendees home happy."
 }
 
 const DATA = [
@@ -64,87 +65,22 @@ export default function Profile() {
         <ScrollView style={styles.container}>
             <View style={styles.userSection}>
                 <View style={styles.coverContainer}>
-                    <Image source={require('../assets/RYBN.jpg')} styles={styles.cover} />
+                    <Image source={require('../assets/wallpaper.jpg')} styles={styles.cover} />
                 </View>
                 <View style={styles.userInfo}>
-                    {/* <View style={{
-                        justifyContent: 'space-between',
-                        flexDirection: 'row',
-                        alignItems: 'center'
-                    }}>
-                        {/* <Pressable onPress={() => {}}>
-                            <Image source={require("../assets/RYBN.jpg")} style={styles.avatar} />
-                        </Pressable> */}
-                        {/* <Pressable onPress={() => {}} style={styles.editProfile}>
-                            <Ionicons name="settings-sharp" size={20} color="#f6f7f9" style={styles.settings} />
-                            <Text style={{
-                                fontWeight: 700,
-                                color: '#f6f7f9'
-                            }}>Edit profile</Text>
-                        </Pressable> */}
-                        {/* <Pressable onPress={() => { }} style={styles.messageButton}>
-                            <FontAwesome5 name="envelope" size={20} color="#f6f7f9" />
-                            <Text style={{
-                                color: '#f6f7f9'
-                            }}>
-                                Message
-                            </Text>
-                        </Pressable> 
-                    </View> */}
-                    <View>
-                        <View style={{
-                            flexDirection: 'row',
-                            justifyContent: 'space-between',
-                            alignItems: 'center'
-                        }}>
-                            <Text style={styles.companyName}>
-                            Lolapalooza
-                            </Text>
-                            <Pressable onPress={() => {}} style={styles.editProfile}>
-                            <Ionicons name="settings-sharp" size={20} color="#f6f7f9" style={styles.settings} />
-                            <Text style={{
-                                fontWeight: 700,
-                                color: '#f6f7f9'
-                            }}>Edit profile</Text>
-                        </Pressable>
-                        </View>
-                        <Text style={styles.displayName}>
-                            Raven Dela Rama
-                        </Text>
-                        <Text style={{...styles.role, fontWeight: 'bold'}}>
-                            lolapalooza@gmail.com
-                        </Text>
-                        <Text style={styles.role}>
-                            Organizer / Music Festivals
-                        </Text>
-                    </View>
-                    
-                    <View>
-                        
-                        <Text style={{
-                            color: 'gray',
-                        }}>
-                            <Octicons name="location" size={16} color="gray" /> Manila, Philippines
-                        </Text>
-                    </View>
-                    <View style={{flexDirection: 'row', justifyContent: 'space-between',  }}>
-                        <RatingStatus showRating={true} rating={'3.5'} />
-                    </View>
-                    <View style={styles.description}>
-                        <Text style={{
-                            fontSize: 16,
-                            letterSpacing: 1,
-                            color: '#f6f7f9',
-                            textAlign: 'center',
-                            paddingVertical: 5
-                        }} >
-                            Description
-                        </Text>
-                        <Text style={styles.descriptionContent}>
-                            The prospect of planning a business event can trigger a lot of anxiety in an event planner. After all, it’s easy to get overwhelmed by the many different types of events you can choose from. And yet, each event type plays an important role in a company’s event marketing strategy.{'\n\n'}
-                            Fortunately, you don’t have to make that choice alone. We’ve compiled a list of eight types of events to make sure you start off in the right direction. No matter your business goals, there’s a strong probability that one of these choices will send you, your sponsors, and your attendees home happy.
-                        </Text>
-                    </View>
+                    <ProfileUserInfo
+                        companyName={'Lolapalooza'}
+                        firstName={'Raven'}
+                        lastName={'Dela Rama'}
+                        email={'lolapalooza@gmail.com'}
+                        role={'Organizer'}
+                        serviceCategory={'Music Festivals'}
+                        location={'Manila, Philippines'}
+                        rating={'3.5'}
+                    />
+                    <Description>
+                        {USER.description}
+                    </Description>
 
                     {/* <View style={{
                         flexDirection: 'row',
@@ -162,7 +98,6 @@ export default function Profile() {
                         </Text>
                     </Pressable>
                     </View> */}
-                    
                 </View>
                 
                 <View style={styles.topTab}>
@@ -171,27 +106,18 @@ export default function Profile() {
                             Posts
                         </Text>
                     </Pressable>
-                    {
-                        USER.role === 'Organizer' ?
-                        <Pressable onPress={() => { }} style={styles.topTabItems}>
-                            <Text style={styles.topTabText}>
-                                Reviews
-                            </Text>
-                        </Pressable>
-                            :
-                        <Pressable onPress={() => { }} style={styles.topTabItems}>
-                            <Text style={styles.topTabText}>
-                                Feedbacks
-                            </Text>
-                        </Pressable>
-                    }
+                    <Pressable onPress={() => { }} style={styles.topTabItems}>
+                        <Text style={styles.topTabText}>
+                            Reviews
+                        </Text>
+                    </Pressable>
                 </View>
             </View>
 
             <View style={styles.userContent}>
                 {
                     USER.role === 'Organizer' &&
-                    <Service
+                    <Review
                         name='John Ray Ben Dela Rama'
                         body=''
                         rating='4.5'
@@ -228,17 +154,6 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderColor: '#443cff'
     },
-    companyName: {
-        fontSize: 18,
-        color: '#f6f7f9',
-        letterSpacing: 1,
-        fontWeight: '500',
-        paddingVertical: 10
-    },
-    role: {
-        fontWeight: '200',
-        color: 'gray'
-    },
     messageButton: {
         backgroundColor: '#ff9030',
         paddingVertical: 8,
@@ -254,28 +169,9 @@ const styles = StyleSheet.create({
         height: '100%',
         justifyContent: 'center'
     },
-    editProfile: {
-        borderWidth: 2,
-        borderColor: '#f6f7f9',
-        borderRadius: 20,
-        paddingHorizontal: 10,
-        height: 30,
-        justifyContent: 'center',
-        flexDirection: 'row',
-        gap: 8,
-        alignItems: 'center',
-        height: 35
-    },
     starItems: {
         flexDirection: 'row',
 
-    },
-    descriptionContent: {
-        color: '#f6f7f9'
-    },
-    description: {
-        textAlign: 'center',
-        padding: 10
     },
     userContent: {
         flex: 1,
@@ -299,7 +195,8 @@ const styles = StyleSheet.create({
     },
     cover: {
         height: '100%',
-        resizeMode: 'cover',
+        width: '100%',
+        resizeMode: 'repeat',
     },
     bookBotton: {
         backgroundColor: '#ff9030',
@@ -307,10 +204,5 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         borderRadius: 5
     },
-    displayName: {
-        color: '#f6f7f9',
-        fontWeight: '900',
-        fontSize: 15,
-        letterSpacing: 1
-    }
+    
 });

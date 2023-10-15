@@ -1,20 +1,26 @@
 import { StyleSheet, SafeAreaView, ScrollView, Text, View, Image } from 'react-native';
-import Category from '../components/home/category';
+import CategoryList from '../components/home/CategoryList';
+import Post from '../components/Review';
 
 export default function Home() {
     return (
         <View style={styles.container}>
-            <ScrollView style={{
-                flex: 1
-            }}>
-                <ScrollView horizontal={true} style={styles.categoryContainer}>
-                    <Category title='Lolapalooza' />
-                    <Category title='RYBN' />
-                    <Category title='Lolapalooza' />
-                    <Category title='RYBN' />
-                    <Category title='Lolapalooza' />
-                    <Category title='RYBN' />
-                </ScrollView>
+            <ScrollView style={styles.categoryContainer}>
+                <CategoryList
+
+                />
+                <View>
+                {
+                    
+                    <Post
+                        name='John Ray Ben Dela Rama'
+                        body=''
+                        rating='4.5'
+                        attachments={'../assets/RYBN.jpg'}
+                        date='10/10/2023'
+                    />
+                }
+                </View>
             </ScrollView>
         </View>
     )
@@ -23,13 +29,9 @@ export default function Home() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-
         backgroundColor: "#33333f",
     },
     categoryContainer: {
-        // padding: 20
-        padding: 20,
-        height: 200,
-    },
-
+        flex: 1
+    }
 })
