@@ -1,4 +1,6 @@
 import { ScrollView, View, StyleSheet, Text, FlatList, Image, TextInput, Pressable } from "react-native";
+import SearchInput from "../../components/SearchInput";
+import Header from "../../components/Header";
 
 const DATA = [
     {
@@ -31,21 +33,20 @@ const DATA = [
     }
 ]
 
-export default function Chat() {
+export default function Chat({navigation}) {
     return (
-        <View style={styles.container}>
-            <View style={styles.searchContainer}>
-                <TextInput
-                    style={styles.searchInput}
-                    placeholder="Search"
-                />
-            </View>
-            <FlatList
-                data={DATA}
-                renderItem={({item}) => {
+        <ScrollView style={styles.container}>
+            {/* <Header title="Chat" /> */}
+            <SearchInput/>
+            {
+                DATA.map((item) => {
                     return (
-                        <Pressable onPress={() => { }} style={styles.chatContainer}>
-                            <Image source={require('../assets/wallpaper.jpg')} style={styles.image} />
+                        <Pressable onPress={() => {
+                            navigation.navigate('Room', {
+                                currentUser: item.name
+                            });
+                        }} style={styles.chatContainer}>
+                            <Image source={{ uri: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }} style={styles.image} />
                             <View>
                                 <Text style={styles.title}>
                                     {item.name}
@@ -53,29 +54,21 @@ export default function Chat() {
                                 <Text style={{
                                     color: 'grey'
                                 }}>
-                                    {item.company}
+                                    {"Company Inc."}
                                 </Text>
                             </View>
                         </Pressable>
                     )
-                }}
-                keyExtractor={(item, index) => index}
-            />
-        </View>
+                })
+            }
+        </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#33333f"
-    },
-    searchContainer: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 10,
-        backgroundColor: '#22222f'
+        backgroundColor: "#33333f",
     },
     chatContainer: {
         padding: 10,
@@ -97,12 +90,5 @@ const styles = StyleSheet.create({
         letterSpacing: 1,
         color: '#f6f7f9'
     },
-    searchInput: {
-        borderRadius: 20,
-        backgroundColor: 'gray',
-        color: '#f6f7f9',
-        flex: 1,
-        paddingVertical: 5,
-        paddingHorizontal: 15
-    },
+    
 })

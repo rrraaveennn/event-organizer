@@ -1,4 +1,5 @@
-import { FlatList, Image, StyleSheet, Text, View } from "react-native";
+import { FlatList, Image, Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import Header from "../../components/Header";
 
 const DATA = [
     {
@@ -33,15 +34,19 @@ const DATA = [
     }
 ]
 
-export default function Booking() {
+export default function Booking({navigation}) {
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
+            {/* <Header title="Booking" /> */}
+            <View style={styles.BookingContainer}>
             <FlatList
                 data={DATA}
                 renderItem={({ item }) => {
                     return (
-                        <View style={styles.bookingContainer}>
-                            <Image source={require('../assets/RYBN.jpg')} style={styles.image} />
+                        <Pressable onPress={() => {
+                            navigation.navigate("Details")
+                        }} style={styles.bookingContainer}>
+                            <Image source={require('../../assets/RYBN.jpg')} style={styles.image} />
                             <View style={styles.infoSection}>
                                 <Text style={{
                                     fontSize: 17,
@@ -59,11 +64,12 @@ export default function Booking() {
                                     {item.accepted ? 'Accepted': 'Not Accepted'}
                                 </Text>
                             </View>
-                        </View>
+                        </Pressable>
                     )
                 }}
             />
-        </View>
+            </View>
+        </SafeAreaView>
     )
 }
 

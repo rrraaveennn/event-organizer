@@ -1,7 +1,8 @@
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
 import RatingStatus from './ratingStatus';
+import ratingAverage from '../../lib/rating-average';
 
 export default function ProfileUserInfo(props) {
     return (<View>
@@ -10,9 +11,11 @@ export default function ProfileUserInfo(props) {
             justifyContent: 'space-between',
             alignItems: 'center'
         }}>
-            <Text style={styles.companyName}>
-            {props.companyName}
-            </Text>
+            <Image
+                style={styles.avatar}
+                source={require("../../assets/RYBN.jpg")}
+            />
+            
             <Pressable onPress={() => {}} style={styles.editProfile}>
             <Ionicons name="settings-sharp" size={20} color="#f6f7f9" style={styles.settings} />
             <Text style={{
@@ -24,6 +27,7 @@ export default function ProfileUserInfo(props) {
 
         <View style={{
             gap: 3,
+            position: "relative"
         }}>
             <Text style={styles.displayName}>
                 {props.firstName} {props.lastName}
@@ -43,7 +47,7 @@ export default function ProfileUserInfo(props) {
                 </Text>
             </View>
             <View style={{flexDirection: 'row', justifyContent: 'space-between',  }}>
-                <RatingStatus showRating={true} rating={'3.5'} />
+                <RatingStatus showRating={true} rating={ratingAverage([3.5, 1.6, 2.7])} />
             </View>
         </View>
 
@@ -81,4 +85,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         height: 35
     },
+    avatar: {
+        // position: "absolute",
+        // top: -50,
+        marginBottom: 5,
+        borderRadius: 200,
+        width: 100,
+        height: 100
+    }
 })

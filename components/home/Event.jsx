@@ -1,12 +1,16 @@
-import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
+import { Pressable, Image, View, Text, StyleSheet } from 'react-native'
 
-export default function Category(props) {
+
+export default function Event(props) {
     return (
-        <Pressable onPress={() => {}} style={styles.container}>
+        <Pressable onPress={() => { }} style={styles.container}>
             <Image source={{uri: props.image}} style={styles.coverImage} />
             <View style={styles.infoSection}>
                 <Text style={styles.title}>
                     {props.title}
+                </Text>
+                <Text style={styles.date}>
+                    {props.date}
                 </Text>
             </View>
         </Pressable>
@@ -22,7 +26,7 @@ const styles = StyleSheet.create({
     },
     coverImage: {
         height: 150,
-        width: 150,
+        width: 340,
         resizeMode: 'cover',
         borderRadius: 20,
         backgroundColor: 'black'
@@ -30,7 +34,7 @@ const styles = StyleSheet.create({
     infoSection: {
         position: 'absolute',
         left: 20,
-        top: 110,
+        top: 100,
         width: '100%',
         paddingHorizontal: 5
     },
@@ -40,5 +44,8 @@ const styles = StyleSheet.create({
         // textAlign: 'center',
         fontWeight: 'bold',
         fontSize: 20
+    },
+    date: {
+        color: "white"
     }
 })

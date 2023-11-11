@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function Description({children}) {
+export default function Description({children, companyName}) {
     return (
         <View style={styles.description}>
             <Text style={{
@@ -10,7 +10,7 @@ export default function Description({children}) {
                 textAlign: 'center',
                 paddingVertical: 5
             }} >
-                Description
+                {companyName}
             </Text>
             <Text style={styles.descriptionContent}>
                 {children}

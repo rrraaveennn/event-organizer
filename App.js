@@ -1,9 +1,9 @@
 import BottomTabs from './components/BottomTabs';
 import { StyleSheet } from 'react-native';
-
 export default function App() {
   return (
-    <BottomTabs safeContainer={styles.safeContainer}/>
+    <BottomTabs safeContainer={styles.safeContainer} />
+
   );
 }
 

@@ -10,17 +10,15 @@ import { Entypo } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-
-import Chat from '../screens/Chat';
-import Notification from '../screens/Notification';
-import Booking from '../screens/Booking';
+import BookingScreens from '../screens/Booking/BookingScreens';
+import ChatScreens from '../screens/Chat/ChatScreens';
 
 
 const Tab = createBottomTabNavigator();
 
 const screenOptions = {
     tabBarShowLabel: false,
-    headerShown: true,
+    headerShown: false,
     tabBarStyle: {
         bottom: 0,
         left: 0,
@@ -29,15 +27,11 @@ const screenOptions = {
         height: 60,
         backgroundColor: "#22222f",
     },
-    header: ({ navigation, route, options }) => {
-        const title = route.name;
-        
-        return <View style={styles.header}>
-            <StatusBar backgroundColor={'#22222f'} barStyle={'light-content'} />
-            <Text style={styles.headerTitle}>
-                {title}
-            </Text>
-        </View>
+    headerStyle: {
+        backgroundColor: "#22222f"
+    },
+    headerTitleStyle: {
+        color: "white"
     }
 }
 
@@ -62,7 +56,7 @@ export default function BottomTabs({ safeContainer }) {
                     </SafeAreaView>}
                 </Tab.Screen>
 
-                <Tab.Screen
+                {/* <Tab.Screen
                     name="Notification"
                     options={{
                         tabBarIcon: ({ focused }) => {
@@ -75,7 +69,7 @@ export default function BottomTabs({ safeContainer }) {
                     {() => <SafeAreaView style={safeContainer}>
                         <Notification />
                     </SafeAreaView>}
-                </Tab.Screen>
+                </Tab.Screen> */}
 
                 <Tab.Screen
                     name="Chat"
@@ -86,11 +80,8 @@ export default function BottomTabs({ safeContainer }) {
                             </View>
                         }
                     }}
-                >
-                    {() => <SafeAreaView style={safeContainer}>
-                        <Chat />
-                    </SafeAreaView>}
-                </Tab.Screen>
+                    component={ChatScreens}
+                />
 
                 <Tab.Screen
                     name="Booking"
@@ -99,13 +90,11 @@ export default function BottomTabs({ safeContainer }) {
                             return <View>
                                 <MaterialIcons name="book" size={24} color={focused ? "#443cff" : "#f6f7f9"} />
                             </View>
-                        }
+                        },
+                        headerShown: false
                     }}
-                >
-                    {() => <SafeAreaView style={safeContainer}>
-                        <Booking />
-                    </SafeAreaView>}
-                </Tab.Screen>
+                    component={BookingScreens}
+                />
 
                 <Tab.Screen
                     name="Profile"
@@ -114,7 +103,8 @@ export default function BottomTabs({ safeContainer }) {
                             return <View>
                                 <FontAwesome name="user-circle-o" size={24} color={focused ? "#443cff" : "#f6f7f9"} />
                             </View>
-                        }
+                        },
+                        headerShown: true
                     }}
                 >
                     {() => <SafeAreaView style={safeContainer}>
@@ -127,21 +117,3 @@ export default function BottomTabs({ safeContainer }) {
         </NavigationContainer>
     );
 }
-
-const styles = StyleSheet.create({
-    header: {
-        height: 60,
-        borderBottomWidth: 1,
-        borderBottomColor: 'grey',
-        paddingTop: 0,
-        backgroundColor: '#22222f',
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingHorizontal: 10
-    },
-    headerTitle: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: '#f6f7f9'
-    }
-})

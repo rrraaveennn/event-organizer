@@ -10,14 +10,14 @@ const POST = {
     attachment: '../assets/wallpaper.jpg'
 }
 
-export default function Review(props) {
+export default function FeedBack(props) {
     const attachment = props.attachment;
 
     return (
         <Pressable onPress={() => {}} style={styles.container}>
             <View style={styles.avatarSection}>
                 <Pressable onPress={() => { }} style={styles.avatar}>
-                    <Image source={require('../assets/RYBN.jpg')} style={styles.avatar} />
+                    <Image source={{uri: props.avatar}} style={styles.avatar} />
                 </Pressable>
             </View>
             <View style={styles.contentSection}>
@@ -59,7 +59,7 @@ export default function Review(props) {
                         }}>
     
                             <View style={styles.attachments}>
-                                <Image source={require('../assets/RYBN.jpg')} style={styles.attachmentImage} />
+                                <Image source={{uri: props.attachments}} style={styles.attachmentImage} />
                             </View>
                         </View>
                     }
