@@ -15,6 +15,6 @@ export default function Notification() {
 const styles = StyleSheet.create({
     container: {
         height: '100%',
-        backgroundColor: "#f6f7f9"
+        backgroundColor: "#33333f"
     },
 })

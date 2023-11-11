@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
+=======
+import { SafeAreaView, StyleSheet, Text, View, StatusBar } from 'react-native';
+>>>>>>> 83407f31a6c66e18f3b9da4e67a7eb8dbd4b1b46
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -10,25 +14,24 @@ import { Entypo } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-
-import Chat from '../screens/Chat';
-import Notification from '../screens/Notification';
-import Booking from '../screens/Booking';
+import BookingScreens from '../screens/Booking/BookingScreens';
+import ChatScreens from '../screens/Chat/ChatScreens';
 
 
 const Tab = createBottomTabNavigator();
 
 const screenOptions = {
     tabBarShowLabel: false,
-    headerShown: true,
+    headerShown: false,
     tabBarStyle: {
         bottom: 0,
         left: 0,
         right: 0,
         elevation: 0,
         height: 60,
-        backgroundColor: "#f6f7f9"
+        backgroundColor: "#22222f",
     },
+<<<<<<< HEAD
     header: ({ navigation, route, options }) => {
         const title = route.name;
         
@@ -38,6 +41,13 @@ const screenOptions = {
                 {title}
             </Text>
         </View>
+=======
+    headerStyle: {
+        backgroundColor: "#22222f"
+    },
+    headerTitleStyle: {
+        color: "white"
+>>>>>>> 83407f31a6c66e18f3b9da4e67a7eb8dbd4b1b46
     }
 }
 
@@ -52,7 +62,7 @@ export default function BottomTabs({ safeContainer }) {
                     options={{
                         tabBarIcon: ({ focused }) => {
                             return <View>
-                                <Entypo name="home" size={24} color={focused ? "#443cff" : "#22222f"} />
+                                <Entypo name="home" size={24} color={focused ? "#443cff" : "#f6f7f9"} />
                             </View>
                         }
                     }}
@@ -62,12 +72,12 @@ export default function BottomTabs({ safeContainer }) {
                     </SafeAreaView>}
                 </Tab.Screen>
 
-                <Tab.Screen
+                {/* <Tab.Screen
                     name="Notification"
                     options={{
                         tabBarIcon: ({ focused }) => {
                             return <View>
-                                <Ionicons name="notifications" size={24} color={focused ? "#443cff" : "#22222f"} />
+                                <Ionicons name="notifications" size={24} color={focused ? "#443cff" : "#f6f7f9"} />
                             </View>
                         }
                     }}
@@ -75,46 +85,42 @@ export default function BottomTabs({ safeContainer }) {
                     {() => <SafeAreaView style={safeContainer}>
                         <Notification />
                     </SafeAreaView>}
-                </Tab.Screen>
+                </Tab.Screen> */}
 
                 <Tab.Screen
                     name="Chat"
                     options={{
                         tabBarIcon: ({ focused }) => {
                             return <View>
-                                <Ionicons name="chatbubble" size={24} color={focused ? "#443cff" : "#22222f"} />
+                                <Ionicons name="chatbubble" size={24} color={focused ? "#443cff" : "#f6f7f9"} />
                             </View>
                         }
                     }}
-                >
-                    {() => <SafeAreaView style={safeContainer}>
-                        <Chat />
-                    </SafeAreaView>}
-                </Tab.Screen>
+                    component={ChatScreens}
+                />
 
                 <Tab.Screen
                     name="Booking"
                     options={{
                         tabBarIcon: ({ focused }) => {
                             return <View>
-                                <MaterialIcons name="book" size={24} color={focused ? "#443cff" : "#22222f"} />
+                                <MaterialIcons name="book" size={24} color={focused ? "#443cff" : "#f6f7f9"} />
                             </View>
-                        }
+                        },
+                        headerShown: false
                     }}
-                >
-                    {() => <SafeAreaView style={safeContainer}>
-                        <Booking />
-                    </SafeAreaView>}
-                </Tab.Screen>
+                    component={BookingScreens}
+                />
 
                 <Tab.Screen
                     name="Profile"
                     options={{
                         tabBarIcon: ({ focused }) => {
                             return <View>
-                                <FontAwesome name="user-circle-o" size={24} color={focused ? "#443cff" : "#22222f"} />
+                                <FontAwesome name="user-circle-o" size={24} color={focused ? "#443cff" : "#f6f7f9"} />
                             </View>
-                        }
+                        },
+                        headerShown: true
                     }}
                 >
                     {() => <SafeAreaView style={safeContainer}>
@@ -126,6 +132,7 @@ export default function BottomTabs({ safeContainer }) {
             </Tab.Navigator>
         </NavigationContainer>
     );
+<<<<<<< HEAD
 }
 
 const styles = StyleSheet.create({
@@ -142,3 +149,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     }
 })
+=======
+}
+>>>>>>> 83407f31a6c66e18f3b9da4e67a7eb8dbd4b1b46
