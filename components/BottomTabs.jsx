@@ -1,14 +1,9 @@
-<<<<<<< HEAD
 import { SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
-=======
-import { SafeAreaView, StyleSheet, Text, View, StatusBar } from 'react-native';
->>>>>>> 83407f31a6c66e18f3b9da4e67a7eb8dbd4b1b46
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 
 
 import Home from '../screens/Home';
-import Profile from '../screens/Profile';
 
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
@@ -16,6 +11,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import BookingScreens from '../screens/Booking/BookingScreens';
 import ChatScreens from '../screens/Chat/ChatScreens';
+import ProfileScreens from '../screens/Profile/ProfileScreens';
 
 
 const Tab = createBottomTabNavigator();
@@ -29,26 +25,18 @@ const screenOptions = {
         right: 0,
         elevation: 0,
         height: 60,
-        backgroundColor: "#22222f",
+        backgroundColor: "white",
     },
-<<<<<<< HEAD
     header: ({ navigation, route, options }) => {
         const title = route.name;
         
         return <View style={styles.header}>
-            <StatusBar backgroundColor={'#f6f7f9'} barStyle={'dark-content'} />
+            <StatusBar backgroundColor={'#22222f'} barStyle={'dark-content'} />
             <Text style={styles.headerTitle}>
                 {title}
             </Text>
         </View>
-=======
-    headerStyle: {
-        backgroundColor: "#22222f"
     },
-    headerTitleStyle: {
-        color: "white"
->>>>>>> 83407f31a6c66e18f3b9da4e67a7eb8dbd4b1b46
-    }
 }
 
 export default function BottomTabs({ safeContainer }) {
@@ -62,15 +50,12 @@ export default function BottomTabs({ safeContainer }) {
                     options={{
                         tabBarIcon: ({ focused }) => {
                             return <View>
-                                <Entypo name="home" size={24} color={focused ? "#443cff" : "#f6f7f9"} />
+                                <Entypo name="home" size={24} color={focused ? "#443cff" : "black"} />
                             </View>
                         }
                     }}
-                >
-                    {() => <SafeAreaView style={safeContainer}>
-                        <Home />
-                    </SafeAreaView>}
-                </Tab.Screen>
+                component={Home}
+                />
 
                 {/* <Tab.Screen
                     name="Notification"
@@ -92,7 +77,7 @@ export default function BottomTabs({ safeContainer }) {
                     options={{
                         tabBarIcon: ({ focused }) => {
                             return <View>
-                                <Ionicons name="chatbubble" size={24} color={focused ? "#443cff" : "#f6f7f9"} />
+                                <Ionicons name="chatbubble" size={24} color={focused ? "#443cff" : "black"} />
                             </View>
                         }
                     }}
@@ -104,7 +89,7 @@ export default function BottomTabs({ safeContainer }) {
                     options={{
                         tabBarIcon: ({ focused }) => {
                             return <View>
-                                <MaterialIcons name="book" size={24} color={focused ? "#443cff" : "#f6f7f9"} />
+                                <MaterialIcons name="book" size={24} color={focused ? "#443cff" : "black"} />
                             </View>
                         },
                         headerShown: false
@@ -117,38 +102,30 @@ export default function BottomTabs({ safeContainer }) {
                     options={{
                         tabBarIcon: ({ focused }) => {
                             return <View>
-                                <FontAwesome name="user-circle-o" size={24} color={focused ? "#443cff" : "#f6f7f9"} />
+                                <FontAwesome name="user-circle-o" size={24} color={focused ? "#443cff" : "black"} />
                             </View>
                         },
-                        headerShown: true
+                        headerShown: false
                     }}
-                >
-                    {() => <SafeAreaView style={safeContainer}>
-                        <Profile />
-                    </SafeAreaView>}
-                </Tab.Screen>
+                    component={ProfileScreens}
+                />
 
         
             </Tab.Navigator>
         </NavigationContainer>
     );
-<<<<<<< HEAD
 }
 
 const styles = StyleSheet.create({
     header: {
-        height: 50,
-        paddingTop: 0,
-        backgroundColor: '#f6f7f9',
+        backgroundColor: '#22222f',
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 10
     },
     headerTitle: {
         fontSize: 20,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: 'white',
     }
 })
-=======
-}
->>>>>>> 83407f31a6c66e18f3b9da4e67a7eb8dbd4b1b46

@@ -1,5 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Ionicons } from '@expo/vector-icons';
 
 import ChatRoom from './ChatRoom';
 import Chat from './Chat';
@@ -11,15 +12,16 @@ export default function ChatScreens() {
     <NavigationContainer independent={true}>
       <Stack.Navigator initialRouteName="Chat" screenOptions={{
         headerStyle: {
-          backgroundColor: '#22222f',
+          backgroundColor: 'white',
         },
         headerTitleStyle: {
-          color: "white"
+          color: "black"
         },
         headerPressColor: {
-          color: "white"
+          color: "black",
         },
-        headerShown: true
+        headerShown: true,
+        headerBackImage: () => <Ionicons name="arrow-back" size={24} color="black" />
       }}>
         <Stack.Screen name="Chat" component={Chat} />
         <Stack.Screen name="Room" component={ChatRoom}

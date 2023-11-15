@@ -6,7 +6,7 @@ export default function Description({children, companyName}) {
             <Text style={{
                 fontSize: 16,
                 letterSpacing: 1,
-                color: '#f6f7f9',
+                color: 'black',
                 textAlign: 'center',
                 paddingVertical: 5
             }} >
@@ -22,7 +22,7 @@ export default function Description({children, companyName}) {
 
 const styles = StyleSheet.create({
     descriptionContent: {
-        color: '#f6f7f9'
+        color: 'black'
     },
     description: {
         textAlign: 'center',

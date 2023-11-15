@@ -2,7 +2,7 @@ import { Text, View, StyleSheet } from "react-native";
 
 export default function BookingDetails(props) {
     return (<View style={styles.container}>
-        <Text>
+        <Text style={styles.text}>
             Booking Details
         </Text>
     </View>)
@@ -10,7 +10,10 @@ export default function BookingDetails(props) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "#22222f",
+        backgroundColor: "white",
         flex: 1
+    },
+    text: {
+        color: "black"
     }
 })

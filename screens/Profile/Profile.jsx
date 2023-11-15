@@ -7,14 +7,11 @@ import {
     Pressable,
     FlatList
 } from 'react-native';
-import NoContent from '../components/NoContent';
 import { FontAwesome5 } from '@expo/vector-icons';
-import Review from '../components/FeedBack';
-import Description from '../components/profile/Description';
-import ProfileUserInfo from '../components/profile/ProfileUserInfo';
-import FeedBack from '../components/FeedBack';
-import ProfileCover from '../components/profile/ProfileCover';
-import Header from '../components/Header';
+import Description from '../../components/profile/Description';
+import ProfileUserInfo from '../../components/profile/ProfileUserInfo';
+import FeedBack from '../../components/FeedBack';
+// import ProfileCover from '../../../components/profile/ProfileCover';
 
 const USER = {
     name: 'RYBN',
@@ -67,21 +64,22 @@ const DATA = [
 export default function Profile() {
     return (
         <ScrollView style={styles.container}>
-            {/* <Header title="Profile" /> */}
             <View style={styles.userSection}>
                 
                 <View style={styles.userInfo}>
                     <ProfileUserInfo
-                        companyName={'Lolapalooza'}
+                        companyName={'Raven Events  '}
                         firstName={'Raven'}
                         lastName={'Dela Rama'}
-                        email={'lolapalooza@gmail.com'}
+                        email={'ravendelarama@gmail.com'}
                         role={'Organizer'}
-                        serviceCategory={'Music Festivals'}
+                        serviceCategory={'Birthday'}
                         location={'Manila, Philippines'}
-                        rating={3.5}
+                        rating={() => {
+                            return (DATA[0].rating + DATA[1].rating) / DATA.length();
+                        }}
                     />
-                    <Description companyName={"Sample"}>
+                    <Description companyName={"Meta"}>
                         {USER.description}
                     </Description>
 
@@ -116,6 +114,7 @@ export default function Profile() {
 
                 {
                     DATA.map((item, index) => {
+
                         return <FeedBack key={index}
                             avatar={item.avatar}
                             name={item.name}
@@ -135,14 +134,14 @@ export default function Profile() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#33333f",
+        backgroundColor: "grey",
         position: 'relative'
     },
     userSection: {
         flex: 1,
     },
     userInfo: {
-        backgroundColor: "#22222f",
+        backgroundColor: "white",
         flex: 1,
         padding: 10,
         gap: 5,
@@ -183,13 +182,13 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         alignItems: 'center',
         height: 50,
-        backgroundColor: '#22222f',
+        backgroundColor: 'white',
         borderBottomWidth: 1,
         borderBottomColor: 'grey',
     },
     topTabItems: {},
     topTabText: {
-        color: '#f6f7f9'
+        color: 'black'
     },
     bookBotton: {
         backgroundColor: '#ff9030',

@@ -49,13 +49,13 @@ export default function EventList(props) {
 const styles = StyleSheet.create({
     container: {
         paddingVertical: 20,
-        backgroundColor: '#22222f'
+        backgroundColor: 'white'
     },
     categoryList: {
         gap: 50
     },
     title: {
-        color: "white",
+        color: "black",
         fontSize: 20,
         fontWeight: "bold"
     },

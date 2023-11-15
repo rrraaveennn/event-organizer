@@ -41,7 +41,7 @@ export default function FeedBack(props) {
                             </Text>
                         </Pressable>
                         <Pressable onPress={() => { }}>
-                            <Entypo name="dots-three-vertical" size={18} color="#f6f7f9" />
+                            <Entypo name="dots-three-vertical" size={18} color="black" />
                         </Pressable>
                     </View>
                 </View>
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         gap: 5,
-        backgroundColor: '#22222f',
+        backgroundColor: 'white',
         padding: 15,
         // height: 200
     },
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     userName: {
         fontWeight: 'bold',
         letterSpacing: 1,
-        color: '#f6f7f9'
+        color: 'black'
     },
     date: {
         fontSize: 12,
@@ -111,10 +111,10 @@ const styles = StyleSheet.create({
     body: {
         lineHeight: 20,
         fontSize: 14.5,
-        color: '#f6f7f9'
+        color: 'black'
     },
     attachments: {
-        borderColor: 'rgba(200, 200, 200, 0.5)',
+        borderColor: 'grey',
         borderWidth: 1,
         borderRadius: 15,
         height: 300

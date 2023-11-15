@@ -51,7 +51,7 @@ export default function Booking({navigation}) {
                                 <Text style={{
                                     fontSize: 17,
                                     fontWeight: 'normal',
-                                    color: '#f6f7f9'
+                                    color: 'black'
                                 }}>
                                     {item.company}
                                 </Text>
@@ -76,16 +76,17 @@ export default function Booking({navigation}) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#33333f"
+        backgroundColor: "white"
     },
     bookingContainer: {
         flexDirection: 'row',
         gap: 20,
         alignItems: 'center',
         borderBottomWidth: 1,
+        borderBottomColor: "grey",
         padding: 10,
         paddingVertical: 20,
-        backgroundColor: '#22222f'
+        backgroundColor: 'white'
     },
     image: {
         height: 80,
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
         gap: 2
     },
     accepted: {
-        color: '#f6f7f9',
+        color: 'black',
         backgroundColor: '#ff9030',
         paddingVertical: 2,
         paddingHorizontal: 7,

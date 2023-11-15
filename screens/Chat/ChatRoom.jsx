@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { View, Text, TextInput, FlatList, StyleSheet, Pressable, Image } from "react-native";
-
+import { Ionicons } from '@expo/vector-icons';
 
 export default function ChatRoom(props) {
     const [message, setMessage] = useState("");
@@ -60,11 +60,9 @@ export default function ChatRoom(props) {
                 </View>
             </View>
             <View style={styles.inputContainer}>
-                <TextInput style={styles.messageInput} placeholder="Message" />
+                <TextInput style={styles.messageInput} placeholder="Enter your message..." placeholderTextColor="gray" />
                 <Pressable style={styles.sendButton}>
-                    <Text>
-                        Send
-                    </Text>
+                <Ionicons name="send" size={24} color="black" />
                 </Pressable>
             </View>
         </View>
@@ -75,7 +73,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         height: "100%",
-        backgroundColor: "#33333f",
+        backgroundColor: "white",
         flexGrow: 1,
     },
     conversationContainer: {
@@ -95,7 +93,7 @@ const styles = StyleSheet.create({
         
     },
     chatBody: {
-        color: "white",
+        color: "black",
         fontSize: 14
     },
     chatDate: {
@@ -116,23 +114,24 @@ const styles = StyleSheet.create({
     messageInput: {
         paddingVertical: 3,
         paddingHorizontal: 10,
-        borderRadius: 10,
+        borderRadius: 100,
         borderWidth: 1,
         borderColor: "gray",
-        flexGrow: 1
+        flexGrow: 1,
+        
     },
     inputContainer: {
         position: "absolute",
         bottom: 0,
         width: "100%",
         height: 50,
-        backgroundColor: "#22222f",
+        backgroundColor: "white",
         flex: 1,
         gap: 4,
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "center",
         paddingVertical: 8,
-        paddingHorizontal: 5
+        paddingHorizontal: 5,
     }
 })

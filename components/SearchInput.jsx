@@ -16,11 +16,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 10,
-        backgroundColor: '#22222f'
+        backgroundColor: 'white'
     },
     searchInput: {
         borderRadius: 20,
-        backgroundColor: 'gray',
+        backgroundColor: 'grey',
         color: '#f6f7f9',
         flex: 1,
         paddingVertical: 5,

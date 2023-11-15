@@ -2,7 +2,6 @@ import { View, Text, StyleSheet, Pressable, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
 import RatingStatus from './ratingStatus';
-import ratingAverage from '../../lib/rating-average';
 
 export default function ProfileUserInfo(props) {
     return (<View>
@@ -17,10 +16,10 @@ export default function ProfileUserInfo(props) {
             />
             
             <Pressable onPress={() => {}} style={styles.editProfile}>
-            <Ionicons name="settings-sharp" size={20} color="#f6f7f9" style={styles.settings} />
+            <Ionicons name="settings-sharp" size={20} color="black" style={styles.settings} />
             <Text style={{
                 fontWeight: 700,
-                color: '#f6f7f9'
+                color: 'black'
             }}>Edit profile</Text>
             </Pressable>
         </View>
@@ -47,7 +46,7 @@ export default function ProfileUserInfo(props) {
                 </Text>
             </View>
             <View style={{flexDirection: 'row', justifyContent: 'space-between',  }}>
-                <RatingStatus showRating={true} rating={ratingAverage([3.5, 1.6, 2.7])} />
+                <RatingStatus showRating={true} rating={4.2} />
             </View>
         </View>
 
@@ -57,14 +56,14 @@ export default function ProfileUserInfo(props) {
 
 const styles = StyleSheet.create({
     displayName: {
-        color: '#f6f7f9',
+        color: 'black',
         fontWeight: '900',
         fontSize: 15,
         letterSpacing: 1
     },
     companyName: {
         fontSize: 18,
-        color: '#f6f7f9',
+        color: 'black',
         letterSpacing: 1,
         fontWeight: '500',
         paddingVertical: 10
@@ -75,7 +74,7 @@ const styles = StyleSheet.create({
     },
     editProfile: {
         borderWidth: 2,
-        borderColor: '#f6f7f9',
+        borderColor: 'black',
         borderRadius: 20,
         paddingHorizontal: 10,
         height: 30,

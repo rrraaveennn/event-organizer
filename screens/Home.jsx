@@ -52,7 +52,7 @@ export default function Home() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#33333f",
+        backgroundColor: "white",
     },
     categoryContainer: {
         flex: 1

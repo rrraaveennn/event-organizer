@@ -29,10 +29,10 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        backgroundColor: "#22222f"
+        backgroundColor: "white"
     },
     title: {
-        color: "white",
+        color: "black",
         fontSize: 20,
         fontWeight: "bold"
     },

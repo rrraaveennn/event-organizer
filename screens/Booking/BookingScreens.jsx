@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import BookingDetails from './BookingDetails';
 import Booking from './Booking';
+import { Ionicons } from '@expo/vector-icons';
 
 const Stack = createStackNavigator();
 
@@ -10,15 +11,13 @@ export default function BookingScreens(props) {
         <NavigationContainer independent={true}>
       <Stack.Navigator initialRouteName="Booking" screenOptions={{
         headerStyle: {
-          backgroundColor: '#22222f',
+          backgroundColor: 'white',
         },
         headerTitleStyle: {
-          color: "white"
+          color: "black"
         },
-        headerPressColor: {
-          color: "white"
-        },
-        headerShown: true
+        headerShown: true,
+        headerBackImage: () => <Ionicons name="arrow-back" size={24} color="black" />
       }}>
         <Stack.Screen name="Booking" component={Booking} />
         <Stack.Screen name="Details" component={BookingDetails}

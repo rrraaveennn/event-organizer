@@ -52,13 +52,13 @@ const styles = StyleSheet.create({
     container: {
         paddingTop: 20,
         paddingBottom: 40,
-        backgroundColor: '#22222f'
+        backgroundColor: 'white'
     },
     categoryList: {
         gap: 50
     },
     title: {
-        color: "white",
+        color: "black",
         fontSize: 20,
         fontWeight: "bold"
     },

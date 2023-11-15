@@ -41,20 +41,20 @@ export default function Chat({navigation}) {
             {
                 DATA.map((item) => {
                     return (
-                        <Pressable onPress={() => {
+                        <Pressable key={item.name} onPress={() => {
                             navigation.navigate('Room', {
-                                currentUser: item.name
+                                currentUser: 'John Doe'
                             });
                         }} style={styles.chatContainer}>
                             <Image source={{ uri: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }} style={styles.image} />
                             <View>
                                 <Text style={styles.title}>
-                                    {item.name}
+                                    {"John Doe"}
                                 </Text>
                                 <Text style={{
                                     color: 'grey'
                                 }}>
-                                    {"Company Inc."}
+                                    {"Meta"}
                                 </Text>
                             </View>
                         </Pressable>
@@ -68,14 +68,14 @@ export default function Chat({navigation}) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#33333f",
+        backgroundColor: "white",
     },
     chatContainer: {
         padding: 10,
         flexDirection: 'row',
         gap: 10,
         alignItems: 'center',
-        backgroundColor: '#22222f'
+        backgroundColor: 'white'
         // borderBottomWidth: 1,
         // borderBottomColor: '#22222f'
     },
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 18,
         letterSpacing: 1,
-        color: '#f6f7f9'
+        color: 'black'
     },
     
 })

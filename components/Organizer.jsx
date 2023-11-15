@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
         paddingHorizontal: 14,
         
-        backgroundColor: '#22222f'
+        backgroundColor: 'white'
     },
     avatar: {
         width: 60,
@@ -51,15 +51,15 @@ const styles = StyleSheet.create({
         justifyContent: "center"
     },
     name: {
-        color: "white",
+        color: "black",
         fontSize: 15,
         fontWeight: "700"
     },
     companyName: {
-        color: "white",
+        color: "black",
     },
     category: {
-        color: "white",
+        color: "black",
         fontWeight: "bold"
     }
 })

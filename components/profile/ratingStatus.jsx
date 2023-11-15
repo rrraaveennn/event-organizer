@@ -8,7 +8,7 @@ export default function RatingStatus(props) {
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3 }}>
                 {
                     props.showRating &&
-                    <Text style={{ top: 1, color: '#f6f7f9' }}>
+                    <Text style={{ top: 1, color: 'black' }}>
                         {props.rating}
                     </Text>
                 }
