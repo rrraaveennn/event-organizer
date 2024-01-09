@@ -1,12 +1,13 @@
 import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
 
-export default function Category(props) {
+export default function Category({image, title, navigation}) {
     return (
-        <Pressable onPress={() => {}} style={styles.container}>
-            <Image source={{uri: props.image}} style={styles.coverImage} />
+        <Pressable onPress={() => {
+        }} style={styles.container}>
+            <Image source={{uri: image}} style={styles.coverImage} />
             <View style={styles.infoSection}>
                 <Text style={styles.title}>
-                    {props.title}
+                    {title}
                 </Text>
             </View>
         </Pressable>

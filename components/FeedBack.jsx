@@ -1,6 +1,9 @@
 import { View, Text, Pressable, Image, StyleSheet } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import RatingStatus from './profile/ratingStatus';
+import { useContext } from 'react';
+import { ThemeContext } from '../contexts/theme-provider';
+import moment from 'moment';
 
 const POST = {
     avatar: '../assets/RYBN.jpg',
@@ -10,14 +13,19 @@ const POST = {
     attachment: '../assets/wallpaper.jpg'
 }
 
-export default function FeedBack(props) {
-    const attachment = props.attachment;
+export default function FeedBack({ avatar, name, rating, date, attachments, navigation }) {
+    const { theme } = useContext(ThemeContext);
 
     return (
-        <Pressable onPress={() => {}} style={styles.container}>
+        <Pressable onPress={() => {
+            navigation.navigate("FeedBackDetails");
+        }} style={{
+            ...styles.container,
+            backgroundColor: theme.color
+        }}>
             <View style={styles.avatarSection}>
                 <Pressable onPress={() => { }} style={styles.avatar}>
-                    <Image source={{uri: props.avatar}} style={styles.avatar} />
+                    <Image source={{uri: avatar}} style={styles.avatar} />
                 </Pressable>
             </View>
             <View style={styles.contentSection}>
@@ -25,10 +33,13 @@ export default function FeedBack(props) {
                     <Pressable onPress={() => { }} style={{
                         gap: 2
                     }}>
-                        <Text style={styles.userName}>
-                            {props.name}
+                        <Text style={{
+                            ...styles.userName,
+                            color: theme.opposite
+                        }}>
+                            {name}
                         </Text>
-                        <RatingStatus rating={props.rating} />
+                        <RatingStatus rating={rating} />
                     </Pressable>
                     <View style={{
                         flexDirection: 'row',
@@ -37,29 +48,32 @@ export default function FeedBack(props) {
                     }}>
                         <Pressable>
                             <Text style={styles.date}>
-                                {props.date}
+                                {date}
                             </Text>
                         </Pressable>
                         <Pressable onPress={() => { }}>
-                            <Entypo name="dots-three-vertical" size={18} color="black" />
+                            <Entypo name="dots-three-vertical" size={18} color={theme.opposite} />
                         </Pressable>
                     </View>
                 </View>
                 <View style={styles.body}>
-                    <Text style={styles.body}>
+                    <Text style={{
+                        ...styles.body,
+                        color: theme.opposite
+                    }}>
                         
                         {POST.body}
                     </Text>
 
                     {
-                        props.attachments && 
+                        attachments && 
                         <View style={{
                             paddingVertical: 20,
                             paddingRight: 10
                         }}>
     
                             <View style={styles.attachments}>
-                                <Image source={{uri: props.attachments}} style={styles.attachmentImage} />
+                                <Image source={{uri: attachments}} style={styles.attachmentImage} />
                             </View>
                         </View>
                     }
@@ -74,7 +88,6 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         gap: 5,
-        backgroundColor: 'white',
         padding: 15,
         // height: 200
     },
@@ -111,7 +124,6 @@ const styles = StyleSheet.create({
     body: {
         lineHeight: 20,
         fontSize: 14.5,
-        color: 'black'
     },
     attachments: {
         borderColor: 'grey',

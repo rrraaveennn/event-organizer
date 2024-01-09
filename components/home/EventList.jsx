@@ -1,5 +1,7 @@
 import { View, Text, Pressable, ScrollView, StyleSheet } from "react-native"
 import Event from "./Event"
+import { useContext } from "react"
+import { ThemeContext } from "../../contexts/theme-provider"
 
 const DATA = [
     {
@@ -25,9 +27,14 @@ const DATA = [
 ]
 
 export default function EventList(props) {
+    const { theme } = useContext(ThemeContext);
+
     return (<View style={styles.container}>
         <View style={styles.header}>
-        <Text style={styles.title}>
+            <Text style={ {
+                ...styles.title,
+                color: theme.opposite
+            }}>
             Upcoming Events
             </Text>
             <Pressable>
@@ -49,13 +56,11 @@ export default function EventList(props) {
 const styles = StyleSheet.create({
     container: {
         paddingVertical: 20,
-        backgroundColor: 'white'
     },
     categoryList: {
         gap: 50
     },
     title: {
-        color: "black",
         fontSize: 20,
         fontWeight: "bold"
     },

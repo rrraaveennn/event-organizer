@@ -1,14 +1,17 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useContext } from 'react';
+import { ThemeContext } from '../../contexts/theme-provider';
 
 
 export default function RatingStatus(props) {
+    const { theme } = useContext(ThemeContext);
 
     return (
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3 }}>
                 {
                     props.showRating &&
-                    <Text style={{ top: 1, color: 'black' }}>
+                    <Text style={{ top: 1, color: theme.opposite }}>
                         {props.rating}
                     </Text>
                 }

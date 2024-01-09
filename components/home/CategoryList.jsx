@@ -1,5 +1,7 @@
 import { StyleSheet, ScrollView, View, FlatList, Text, Pressable } from "react-native";
-import Category from './Category';
+import Category from "./CategoryDetails";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/theme-provider";
 
 const DATA = [
     {
@@ -24,14 +26,23 @@ const DATA = [
     },
 ]
 
-export default function CategoryList() {
+export default function CategoryList({navigation}) {
+    const { theme } = useContext(ThemeContext);
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-            <Text style={styles.title}>
+            <Text style={{
+                ...styles.title,
+                color: theme.opposite
+            }}>
                 Categories
                 </Text>
-                <Pressable>
+                <Pressable
+                    onPress={() => {
+                        navigation.navigate("Categories")
+                    }}
+                >
                     <Text style={styles.viewMore}>
                         View more
                     </Text>
@@ -52,7 +63,6 @@ const styles = StyleSheet.create({
     container: {
         paddingTop: 20,
         paddingBottom: 40,
-        backgroundColor: 'white'
     },
     categoryList: {
         gap: 50

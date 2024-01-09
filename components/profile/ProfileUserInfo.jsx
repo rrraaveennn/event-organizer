@@ -2,8 +2,12 @@ import { View, Text, StyleSheet, Pressable, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
 import RatingStatus from './ratingStatus';
+import { useContext } from 'react';
+import { ThemeContext } from '../../contexts/theme-provider';
 
 export default function ProfileUserInfo(props) {
+    const { theme } = useContext(ThemeContext);
+
     return (<View>
         <View style={{
             flexDirection: 'row',
@@ -15,11 +19,14 @@ export default function ProfileUserInfo(props) {
                 source={require("../../assets/RYBN.jpg")}
             />
             
-            <Pressable onPress={() => {}} style={styles.editProfile}>
-            <Ionicons name="settings-sharp" size={20} color="black" style={styles.settings} />
+            <Pressable onPress={() => { }} style={{
+                ...styles.editProfile,
+                borderColor: "#434d56"
+            }}>
+            <Ionicons name="settings-sharp" size={20} color={"#434d56"} style={styles.settings} />
             <Text style={{
-                fontWeight: 700,
-                color: 'black'
+                    fontWeight: 700,
+                    color: "#434d56",
             }}>Edit profile</Text>
             </Pressable>
         </View>
@@ -28,7 +35,10 @@ export default function ProfileUserInfo(props) {
             gap: 3,
             position: "relative"
         }}>
-            <Text style={styles.displayName}>
+            <Text style={{
+                ...styles.displayName,
+                color: theme.opposite
+            }}>
                 {props.firstName} {props.lastName}
             </Text>
             <Text style={{...styles.role, fontWeight: 'bold'}}>
@@ -56,14 +66,12 @@ export default function ProfileUserInfo(props) {
 
 const styles = StyleSheet.create({
     displayName: {
-        color: 'black',
-        fontWeight: '900',
-        fontSize: 15,
-        letterSpacing: 1
+        fontWeight: '700',
+        fontSize: 16,
+        letterSpacing: 2
     },
     companyName: {
         fontSize: 18,
-        color: 'black',
         letterSpacing: 1,
         fontWeight: '500',
         paddingVertical: 10
@@ -74,7 +82,6 @@ const styles = StyleSheet.create({
     },
     editProfile: {
         borderWidth: 2,
-        borderColor: 'black',
         borderRadius: 20,
         paddingHorizontal: 10,
         height: 30,
@@ -85,8 +92,6 @@ const styles = StyleSheet.create({
         height: 35
     },
     avatar: {
-        // position: "absolute",
-        // top: -50,
         marginBottom: 5,
         borderRadius: 200,
         width: 100,

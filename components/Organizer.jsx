@@ -1,10 +1,17 @@
+import { useContext } from 'react';
 import { View, StyleSheet, Text, Image, Pressable } from 'react-native';
+import { ThemeContext } from '../contexts/theme-provider';
 
 
 export default function Organizer(props) {
+    const { theme } = useContext(ThemeContext);
+
     return (
         <View>
-            <Pressable onPress={() => { }} style={styles.container}>
+            <Pressable onPress={() => { }} style={{
+                ...styles.container,
+                backgroundColor: theme.color
+            }}>
                 <View>
                     <Image
                         style={styles.avatar}
@@ -13,15 +20,23 @@ export default function Organizer(props) {
                 </View>
                 <View style={styles.info}>
                     <View>
-                        <Text style={styles.name}>
+                        <Text style={{
+                            ...styles.name,
+                            color: theme.opposite
+                        }}>
                             {props.firstName} {props.lastName}
                         </Text>
                     </View>
                     <View>
-                        <Text style={styles.companyName}>
+                        <Text style={{
+                            color:  "#434d56"
+                        }}>
                             {props.companyName}
                         </Text>
-                        <Text style={styles.category}>
+                        <Text style={{
+                            ...styles.category,
+                            color: "gray"
+                        }}>
                             {props.category}
                         </Text>
                     </View>
@@ -38,8 +53,6 @@ const styles = StyleSheet.create({
         gap: 16,
         paddingVertical: 15,
         paddingHorizontal: 14,
-        
-        backgroundColor: 'white'
     },
     avatar: {
         width: 60,
@@ -51,15 +64,10 @@ const styles = StyleSheet.create({
         justifyContent: "center"
     },
     name: {
-        color: "black",
         fontSize: 15,
         fontWeight: "700"
     },
-    companyName: {
-        color: "black",
-    },
     category: {
-        color: "black",
         fontWeight: "bold"
     }
 })

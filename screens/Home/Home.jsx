@@ -1,19 +1,29 @@
 import { StyleSheet, SafeAreaView, ScrollView, Text, View, Image } from 'react-native';
-import CategoryList from '../components/home/CategoryList';
-import Organizer from '../components/Organizer';
-import OrganizerList from '../components/home/OrganizersList';
-import EventList from '../components/home/EventList';
-import SearchInput from '../components/SearchInput';
+import CategoryList from '../../components/home/CategoryList';
+import Organizer from '../../components/Organizer';
+import OrganizerList from '../../components/home/OrganizersList';
+import EventList from '../../components/home/EventList';
+import SearchInput from '../../components/SearchInput';
+import { useContext } from 'react';
+import { ThemeContext } from '../../contexts/theme-provider';
 
-export default function Home() {
+export default function Home({navigation}) {
+    const { theme } = useContext(ThemeContext);
+    
     return (
-        <View style={styles.container}>
+        <View style={{
+            ...styles.container,
+            backgroundColor: theme.color
+        }}>
             <ScrollView style={styles.categoryContainer}>
                 <SearchInput />
                 <EventList />
                 <CategoryList
+                    navigation={navigation}
                 />
-                <OrganizerList>
+                <OrganizerList
+                    navigation={navigation}
+                >
                     <Organizer
                     firstName="Jireh"
                     lastName="Belen"
@@ -52,7 +62,6 @@ export default function Home() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "white",
     },
     categoryContainer: {
         flex: 1

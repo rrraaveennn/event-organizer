@@ -1,14 +1,23 @@
+import { useContext } from "react";
 import { StyleSheet, View, Text, Pressable } from "react-native";
+import { ThemeContext } from "../../contexts/theme-provider";
 
 
-export default function OrganizerList({children}) {
+export default function OrganizerList({ children, navigation }) {
+    const { theme } = useContext(ThemeContext);
+
     return <View style={styles.container}>
         <View style={styles.header}>
-            <Text style={styles.title}>
+            <Text style={{
+                ...styles.title,
+                color: theme.opposite
+            }}>
                 Organizers
             </Text>
             <Pressable>
-            <Text style={styles.viewMore}>
+                <Text style={styles.viewMore} onPress={() => {
+                    navigation.navigate("Organizers");
+            }}>
                 View more
             </Text>
             </Pressable>
@@ -29,10 +38,8 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        backgroundColor: "white"
     },
     title: {
-        color: "black",
         fontSize: 20,
         fontWeight: "bold"
     },

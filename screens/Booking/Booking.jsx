@@ -1,42 +1,50 @@
-import { FlatList, Image, Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { FlatList, Image, Pressable, SafeAreaView, StyleSheet, Text, View, useColorScheme } from "react-native";
 import Header from "../../components/Header";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/theme-provider";
+import moment from "moment";
 
 const DATA = [
     {
         company: 'Lolapalooza',
         accepted: true,
         organizer: 'RYBN',
-        duration: ['10/30/2023', '10/31/2023']
+        duration: moment().add(7, "days").calendar()
     },
     {
         company: 'Coachella',
         accepted: false,
         organizer: 'RYBN',
-        duration: ['10/30/2023', '10/31/2023']
+        duration: moment().add(7, "days").fromNow()
     },
     {
         company: 'Superpop 2023',
         accepted: true,
         organizer: 'RYBN',
-        duration: ['10/30/2023', '10/31/2023']
+        duration: moment().add(7, "days").fromNow()
     },
     {
         company: 'Asia Artist Award',
         accepted: false,
         organizer: 'RYBN',
-        duration: ['10/30/2023', '10/31/2023']
+        duration: moment().add(7, "days").fromNow()
     },
     {
         company: 'TMA',
         accepted: true,
         organizer: 'RYBN',
-        duration: ['10/30/2023', '10/31/2023']
+        duration: moment().add(7, "days").fromNow()
     }
 ]
 
-export default function Booking({navigation}) {
+export default function Booking({ navigation }) {
+    const { theme } = useContext(ThemeContext);
+
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={{
+            ...styles.container,
+            backgroundColor: theme.color
+        }}>
             {/* <Header title="Booking" /> */}
             <View style={styles.BookingContainer}>
             <FlatList
@@ -50,18 +58,21 @@ export default function Booking({navigation}) {
                             <View style={styles.infoSection}>
                                 <Text style={{
                                     fontSize: 17,
-                                    fontWeight: 'normal',
-                                    color: 'black'
+                                    fontWeight: '700',
+                                    color: theme.opposite
                                 }}>
                                     {item.company}
                                 </Text>
                                 <Text style={{
                                     color: 'grey'
                                 }}>
-                                    {item.duration[0]} - {item.duration[1]}
+                                    {item.duration}
                                 </Text>
-                                <Text style={styles.accepted}>
-                                    {item.accepted ? 'Accepted': 'Not Accepted'}
+                                <Text style={{
+                                    ...styles.accepted,
+                                    color: "#dde5eb"
+                                }}>
+                                    {item.accepted ? 'Accepted': 'Rejected'}
                                 </Text>
                             </View>
                         </Pressable>
@@ -76,17 +87,15 @@ export default function Booking({navigation}) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "white"
     },
     bookingContainer: {
         flexDirection: 'row',
         gap: 20,
         alignItems: 'center',
         borderBottomWidth: 1,
-        borderBottomColor: "grey",
+        borderBottomColor: "#434d56",
         padding: 10,
         paddingVertical: 20,
-        backgroundColor: 'white'
     },
     image: {
         height: 80,
@@ -100,7 +109,6 @@ const styles = StyleSheet.create({
         gap: 2
     },
     accepted: {
-        color: 'black',
         backgroundColor: '#ff9030',
         paddingVertical: 2,
         paddingHorizontal: 7,

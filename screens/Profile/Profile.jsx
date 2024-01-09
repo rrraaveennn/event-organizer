@@ -11,6 +11,8 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import Description from '../../components/profile/Description';
 import ProfileUserInfo from '../../components/profile/ProfileUserInfo';
 import FeedBack from '../../components/FeedBack';
+import { useContext } from 'react';
+import { ThemeContext } from '../../contexts/theme-provider';
 // import ProfileCover from '../../../components/profile/ProfileCover';
 
 const USER = {
@@ -61,12 +63,20 @@ const DATA = [
     }
 ];
 
-export default function Profile() {
+export default function Profile({ navigation }) {
+    const { theme } = useContext(ThemeContext);
+
     return (
         <ScrollView style={styles.container}>
-            <View style={styles.userSection}>
+            <View style={{
+                ...styles.userSection,
+                backgroundColor: theme.color
+            }}>
                 
-                <View style={styles.userInfo}>
+                <View style={{
+                    ...styles.userInfo,
+                    backgroundColor: theme.color
+                }}>
                     <ProfileUserInfo
                         companyName={'Raven Events  '}
                         firstName={'Raven'}
@@ -101,9 +111,15 @@ export default function Profile() {
                     </View> */}
                 </View>
                 
-                <View style={styles.topTab}>
+                <View style={{
+                    ...styles.topTab,
+                    backgroundColor: theme.color,
+                }}>
                     <Pressable onPress={() => { }} style={styles.topTabItems}>
-                        <Text style={styles.topTabText}>
+                        <Text style={{
+                            ...styles.topTabText,
+                            color: theme.opposite
+                        }}>
                             Reviews
                         </Text>
                     </Pressable>
@@ -122,6 +138,7 @@ export default function Profile() {
                             rating={item.rating}
                             attachments={item.attachments}
                             date={item.date}
+                            navigation={navigation}
                         />
                     })
                 }
@@ -134,7 +151,6 @@ export default function Profile() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "grey",
         position: 'relative'
     },
     userSection: {
@@ -175,7 +191,8 @@ const styles = StyleSheet.create({
     },
     userContent: {
         flex: 1,
-        gap: 1
+        gap: 1,
+        backgroundColor: "#434d56"
     },
     topTab: {
         flexDirection: 'row',
@@ -184,7 +201,7 @@ const styles = StyleSheet.create({
         height: 50,
         backgroundColor: 'white',
         borderBottomWidth: 1,
-        borderBottomColor: 'grey',
+        borderBottomColor: "#434d56",
     },
     topTabItems: {},
     topTabText: {
