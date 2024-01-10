@@ -3,15 +3,15 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Ionicons } from '@expo/vector-icons';
 import { View, Text } from "react-native";
 
-import Profile from "./Profile";
-import FeedBack from '../../components/FeedBack';
 import DarkMode from '../../components/DarkMode';
 import { useContext } from 'react';
 import { ThemeContext } from '../../contexts/theme-provider';
+import UserServiceProfile from './UserServiceProfile';
+import Home from '../Home/Home';
 
 const Stack = createStackNavigator();
 
-export default function ProfileScreens() {
+export default function UserServiceProfileScreens() {
   const { theme } = useContext(ThemeContext);
 
     return (
@@ -25,7 +25,7 @@ export default function ProfileScreens() {
           headerShown: true,
           headerBackImage: () => <Ionicons name="arrow-back" size={24} color="black" />
         }}>
-        <Stack.Screen name="Profile" component={Profile} options={{
+        {/* <Stack.Screen name="UserServiceProfile" component={UserServiceProfile} options={{
          header: ({ navigation, route, options }) => {
             const title = route.name;
             
@@ -35,6 +35,7 @@ export default function ProfileScreens() {
               justifyContent: "space-between",
               alignItems: "center",
               paddingHorizontal: 20,
+              paddingTop: 30 
             }}>
               <Text style={{
                 fontSize: 18,
@@ -48,7 +49,7 @@ export default function ProfileScreens() {
             </View>
           },
         }}
-        />
+            /> */}
       </Stack.Navigator>
     )
 }

@@ -1,15 +1,16 @@
 import { View, Text, StyleSheet, Pressable, Image, Modal } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
-import RatingStatus from './ratingStatus';
+import RatingStatus from '../profile/ratingStatus';
 import { useContext, useState } from 'react';
 import { ThemeContext } from '../../contexts/theme-provider';
-import ProfileCover from './ProfileCover';
+import ProfileCover from '../profile/ProfileCover';
 
-export default function ProfileUserInfo(props) {
+export default function UserServiceProfileInfo(props) {
     const { theme } = useContext(ThemeContext);
     const [editProfileModalVisible, setEditProfileModalVisible] = useState(false);
     return (<View>
+        
         <View style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
@@ -18,11 +19,13 @@ export default function ProfileUserInfo(props) {
         }}>
             <Image
                 style={styles.avatar}
-                source={require("../../assets/RYBN.jpg")}
+                source={{
+                    uri: props.image
+                }}
                 />
                
             
-            <Pressable onPress={() => {
+            {/* <Pressable onPress={() => {
                 setEditProfileModalVisible(true)
             }} style={{
                 ...styles.editProfile,
@@ -33,24 +36,40 @@ export default function ProfileUserInfo(props) {
                     fontWeight: 700,
                     color: "#434d56",
             }}>Edit profile</Text>
+            </Pressable> */}
+
+<Pressable>
+                <AntDesign name="message1" size={24} color="black" />
             </Pressable>
 
-            {/* <View style={{
-                        flexDirection: 'row',
-                        justifyContent: 'flex-end',
-                        paddingHorizontal: 10
-                    }}>
-                        <Pressable onPress={() => { }} style={styles.bookBotton}>
+
+            <Pressable onPress={() => {
+                setEditProfileModalVisible(true)
+            }} style={{
+                backgroundColor: "#ff9030",
+                color: "#dde5eb",
+                borderRadius: 20,
+                paddingHorizontal: 20,
+                height: 30,
+                justifyContent: 'center',
+                flexDirection: 'row',
+                gap: 8,
+                alignItems: 'center',
+                height: 35,
+                position: "relative",
+                marginTop: 10,
+                left: 0
+            }}>
+                <AntDesign name="book" size={24} color="#dde5eb" />
                         <Text style={{
                             textAlign: 'center',
-                            color: '#f6f7f9',
-                            fontSize: 14,
-                            letterSpacing: 1
+                    color: '#f6f7f9',
+                    fontSize: 14,
+                            fontWeight: "700",
                         }}>
                             Book now
                         </Text>
                     </Pressable>
-                    </View> */}
             </View>
         <Modal
             animationType={"slide"}
@@ -76,12 +95,10 @@ export default function ProfileUserInfo(props) {
                     <View style={{
                         padding: 20,
                         borderTopWidth: 1,
-                        borderBottomWidth: 1,
                         borderColor: "#434d56",
                         flexDirection: "row",
                         justifyContent: "flex-end",
                         gap: 3,
-                        borderRadius: 10
                     }}>
 
                         <Pressable
@@ -147,7 +164,7 @@ export default function ProfileUserInfo(props) {
                 </Text>
             </View>
             <View style={{flexDirection: 'row', justifyContent: 'space-between',  }}>
-                <RatingStatus showRating={true} rating={4.2} />
+                <RatingStatus showRating={true} rating={props.rating} />
             </View>
         </View>
 

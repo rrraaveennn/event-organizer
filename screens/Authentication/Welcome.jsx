@@ -12,6 +12,7 @@ function Welcome({navigation}) {
         ...styles.container,
         backgroundColor: theme.color
     }}>
+        
         <Backgrounds no={1}>
             <View style={styles.wrapper}>
 
@@ -19,6 +20,7 @@ function Welcome({navigation}) {
                     flexDirection: "row",
                     width: "100%",
                     paddingVertical: 10,
+                    paddingTop: 30
                 }}>
                     <DarkMode />
                 </View>

@@ -3,6 +3,7 @@ import { SafeAreaView, StyleSheet } from 'react-native';
 import { useContext } from 'react';
 import ThemeProvider, { ThemeContext } from './contexts/theme-provider';
 import WelcomeScreens from './screens/Authentication/WelcomeScreens';
+import UserProvider from './contexts/session-provider';
 
 
 export default function App() {
@@ -11,8 +12,9 @@ export default function App() {
   return (
     <SafeAreaView style={styles.safeContainer}>
       <ThemeProvider>
-
+      <UserProvider>
       <WelcomeScreens />
+      </UserProvider>
       </ThemeProvider>
     </SafeAreaView>
   );

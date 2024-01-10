@@ -8,7 +8,8 @@ import {
     Text,
     Platform,
     Keyboard,
-    Pressable
+    Pressable,
+    StatusBar
 } from "react-native";
 import { ThemeContext } from "../../contexts/theme-provider";
 import DarkMode from "../../components/DarkMode";
@@ -25,6 +26,12 @@ function Register({ navigation }) {
         ...styles.container,
         backgroundColor: theme.color
     }}>
+                    <StatusBar
+        animated
+        backgroundColor={theme.color}
+        currentHeight
+        barStyle={theme.type == "light" ? "dark-content": "light-content"}
+    />
         <Backgrounds no={1}>
             <Pressable onPress={Keyboard.dismiss} style={{
                 flex: 1,
@@ -32,7 +39,7 @@ function Register({ navigation }) {
             }}>
                 <View style={{
                     position: "absolute",
-                    top: 10,
+                    top: 30,
                     left: 10,
                 }}>
                 <DarkMode />
@@ -45,7 +52,25 @@ function Register({ navigation }) {
                         Sign up
                     </Text>
                     <TextInput
-                        placeholder="username"
+                        placeholder="firstname"
+                        placeholderTextColor={"gray"}
+                        style={{
+                            ...styles.input,
+                            color: theme.opposite,
+                            fontSize: 16
+                        }}
+                    />
+                    <TextInput
+                        placeholder="lastname"
+                        placeholderTextColor={"gray"}
+                        style={{
+                            ...styles.input,
+                            color: theme.opposite,
+                            fontSize: 16
+                        }}
+                    />
+                    <TextInput
+                        placeholder="company name"
                         placeholderTextColor={"gray"}
                         style={{
                             ...styles.input,

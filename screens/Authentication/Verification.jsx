@@ -1,4 +1,4 @@
-import {  View, Text, TextInput, Pressable, KeyboardAvoidingView, Keyboard, StyleSheet } from "react-native";
+import {  View, Text, TextInput, Pressable, KeyboardAvoidingView, Keyboard, StyleSheet, StatusBar } from "react-native";
 import Backgrounds from "../../components/Backgrounds";
 import DarkMode from "../../components/DarkMode";
 import { useContext } from "react";
@@ -12,16 +12,23 @@ function Verification({ navigation }) {
             ...styles.container,
             backgroundColor: theme.color
         }}>
+            <StatusBar
+        animated
+        backgroundColor={theme.color}
+        currentHeight
+        barStyle={theme.type == "light" ? "dark-content": "light-content"}
+    />
 
         <Backgrounds no={2}>
             <Pressable onPress={Keyboard.dismiss} style={{
                 flex: 1,
                 justifyContent: "flex-start",
-                paddingTop: 40
+                    paddingTop: 100
+                
             }}>
                 <View style={{
                     position: "absolute",
-                    top: 10,
+                    top: 30,
                     left: 10,
                 }}>
                 <DarkMode />

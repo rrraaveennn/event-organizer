@@ -16,15 +16,15 @@ export default function BookingScreens(props) {
         <NavigationContainer independent={true}>
       <Stack.Navigator initialRouteName="Booking" screenOptions={{
         headerStyle: {
-          backgroundColor: 'white',
+          backgroundColor: theme.color,
         },
         headerTitleStyle: {
           color: theme.type == "light" ? "#434d56": theme.opposite
         },
         headerShown: true,
-        headerBackImage: () => <Ionicons name="arrow-back" size={24} color="black" />
+        headerBackImage: () => <Ionicons name="arrow-back" size={24} color={theme.opposite} />
       }}>
-          <Stack.Screen name="Booking" component={Booking} options={{
+          <Stack.Screen name="Bookings" component={Booking} options={{
           header: ({ navigation, route, options }) => {
             const title = route.name;
             
@@ -34,7 +34,6 @@ export default function BookingScreens(props) {
               justifyContent: "space-between",
               alignItems: "center",
               paddingHorizontal: 20,
-              height: 55
             }}>
               <Text style={{
                 fontSize: 18,

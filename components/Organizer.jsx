@@ -3,19 +3,31 @@ import { View, StyleSheet, Text, Image, Pressable } from 'react-native';
 import { ThemeContext } from '../contexts/theme-provider';
 
 
-export default function Organizer(props) {
+export default function Organizer({navigation, email, rating, role, address, image, firstName, lastName, companyName, category}) {
     const { theme } = useContext(ThemeContext);
 
     return (
         <View>
-            <Pressable onPress={() => { }} style={{
+            <Pressable onPress={() => {
+                navigation.navigate("UserServiceProfile", {
+                    firstName,
+                    image,
+                    lastName,
+                    companyName,
+                    category,
+                    role,
+                    address,
+                    email,
+                    rating
+                });
+            }} style={{
                 ...styles.container,
                 backgroundColor: theme.color
             }}>
                 <View>
                     <Image
                         style={styles.avatar}
-                        source={{uri: props.image}}
+                        source={{uri: image}}
                     />
                 </View>
                 <View style={styles.info}>
@@ -24,20 +36,20 @@ export default function Organizer(props) {
                             ...styles.name,
                             color: theme.opposite
                         }}>
-                            {props.firstName} {props.lastName}
+                            {firstName} {lastName}
                         </Text>
                     </View>
                     <View>
                         <Text style={{
                             color:  "#434d56"
                         }}>
-                            {props.companyName}
+                            {companyName}
                         </Text>
                         <Text style={{
                             ...styles.category,
                             color: "gray"
                         }}>
-                            {props.category}
+                            {category}
                         </Text>
                     </View>
                 </View>

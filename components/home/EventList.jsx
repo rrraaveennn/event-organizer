@@ -29,7 +29,8 @@ const DATA = [
 export default function EventList(props) {
     const { theme } = useContext(ThemeContext);
 
-    return (<View style={styles.container}>
+    return (
+    <View style={styles.container}>
         <View style={styles.header}>
             <Text style={ {
                 ...styles.title,

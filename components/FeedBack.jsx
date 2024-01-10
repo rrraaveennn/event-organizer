@@ -18,7 +18,6 @@ export default function FeedBack({ avatar, name, rating, date, attachments, navi
 
     return (
         <Pressable onPress={() => {
-            navigation.navigate("FeedBackDetails");
         }} style={{
             ...styles.container,
             backgroundColor: theme.color

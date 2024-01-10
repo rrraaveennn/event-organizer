@@ -8,7 +8,8 @@ import {
     Text,
     Platform,
     Keyboard,
-    Pressable
+    Pressable,
+    StatusBar
 } from "react-native";
 import { ThemeContext } from "../../contexts/theme-provider";
 import DarkMode from "../../components/DarkMode";
@@ -25,6 +26,7 @@ function Login({ navigation }) {
         ...styles.container,
         backgroundColor: theme.color
     }}>
+
         <Backgrounds no={1}>
             <Pressable onPress={Keyboard.dismiss} style={{
                 flex: 1,
@@ -32,8 +34,8 @@ function Login({ navigation }) {
             }}>
                 <View style={{
                     position: "absolute",
-                    top: 10,
-                    left: 10,
+                    top: 30,
+                    left: 10
                 }}>
                 <DarkMode />
                 </View>
@@ -45,7 +47,7 @@ function Login({ navigation }) {
                         Sign in
                     </Text>
                     <TextInput
-                        placeholder="username"
+                        placeholder="email"
                         placeholderTextColor={"gray"}
                         style={{
                             ...styles.input,

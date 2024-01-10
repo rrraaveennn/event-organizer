@@ -20,6 +20,7 @@ function WelcomeScreens() {
       <StatusBar
           animated
           backgroundColor={theme.color}
+          currentHeight
           barStyle={theme.type == "light" ? "dark-content": "light-content"}
       />
     <NavigationContainer independent={true}>

@@ -8,6 +8,8 @@ import { ThemeContext } from '../../contexts/theme-provider';
 import Home from './Home';
 import Categories from './Categories';
 import Organizers from './Organizers';
+import UserServiceProfileScreens from '../UserServiceProfile/UserServiceProfileScreens';
+import UserServiceProfile from '../UserServiceProfile/UserServiceProfile';
 
 const Stack = createStackNavigator();
 
@@ -15,15 +17,15 @@ export default function HomeScreens() {
   const { theme } = useContext(ThemeContext);
 
     return (
-        <Stack.Navigator initialRouteName="Home" screenOptions={{
-          headerStyle: {
-            backgroundColor: 'white',
-          },
-          headerTitleStyle: {
-            color: "black"
+      <Stack.Navigator initialRouteName="Home" screenOptions={{
+        headerStyle: {
+          backgroundColor: theme.color,
         },
-          headerShown: true,
-          headerBackImage: () => <Ionicons name="arrow-back" size={24} color="black" />
+        headerTitleStyle: {
+          color: theme.type == "light" ? "#434d56" : theme.opposite
+        },
+        headerShown: true,
+        headerBackImage: () => <Ionicons name="arrow-back" size={24} color={theme.opposite} />
         }}>
         <Stack.Screen name="Home" component={Home}
                 options={{
@@ -36,7 +38,7 @@ export default function HomeScreens() {
               justifyContent: "space-between",
               alignItems: "center",
               paddingHorizontal: 20,
-              height: 55
+              
             }}>
               <Text style={{
                 fontSize: 18,
@@ -53,6 +55,7 @@ export default function HomeScreens() {
         />
             <Stack.Screen name="Categories" component={Categories} />
             <Stack.Screen name="Organizers" component={Organizers} />
+            <Stack.Screen name="UserServiceProfile" component={UserServiceProfile} />
       </Stack.Navigator>
     )
 }

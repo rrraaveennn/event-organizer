@@ -39,7 +39,7 @@ export default function ChatScreens() {
               justifyContent: "space-between",
               alignItems: "center",
               paddingHorizontal: 20,
-              height: 55
+              
             }}>
               <Text style={{
                 fontSize: 18,

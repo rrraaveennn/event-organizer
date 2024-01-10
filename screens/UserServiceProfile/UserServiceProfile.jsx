@@ -9,12 +9,11 @@ import {
 } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import Description from '../../components/profile/Description';
-import ProfileUserInfo from '../../components/profile/ProfileUserInfo';
 import FeedBack from '../../components/FeedBack';
 import { useContext } from 'react';
 import { ThemeContext } from '../../contexts/theme-provider';
-import { UserContext } from '../../contexts/session-provider';
 import useSession from '../../hooks/useSession';
+import UserServiceProfileInfo from '../../components/userProfile/UserServiceProfileInfo';
 import ProfileCover from '../../components/profile/ProfileCover';
 // import ProfileCover from '../../../components/profile/ProfileCover';
 
@@ -58,9 +57,11 @@ const DATA = [
     }
 ];
 
-export default function Profile({ navigation }) {
+export default function UserServiceProfile({ navigation, route }) {
     const { theme } = useContext(ThemeContext);
     const { user } = useSession();
+
+    const { firstName, lastName, category, role, address, image, companyName, email, rating } = route.params;
 
     return (
         <ScrollView style={styles.container}>
@@ -73,17 +74,19 @@ export default function Profile({ navigation }) {
                     ...styles.userInfo,
                     backgroundColor: theme.color
                 }}>
-                    <ProfileUserInfo
-                        companyName={user.companyName}
-                        firstName={user.firstName}
-                        lastName={user.lastName}
-                        email={user.email}
-                        role={user.role}
-                        serviceCategory={user.service}
-                        location={user.address}
-                        rating={user.rating}
+                    
+                    <UserServiceProfileInfo
+                        companyName={companyName}
+                        firstName={firstName}
+                        lastName={lastName}
+                        email={email}
+                        role={role}
+                        serviceCategory={category}
+                        location={address}
+                        rating={rating}
+                        image={image}
                     />
-                    <Description companyName={"Meta"}>
+                    <Description companyName={companyName}>
                         {user.description}
                     </Description>
 
